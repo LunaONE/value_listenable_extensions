@@ -1,0 +1,1 @@
+fvm dart run generate_combine_latest.dart
