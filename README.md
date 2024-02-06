@@ -83,3 +83,34 @@ b.value = 9;
 
 maxValue.dispose();
 ```
+
+## `CombinedValueListenable`
+
+The `class`-based relative of `combineLatest*` is useful to build state objects which are made up of small, independent parts or that depend on external inputs in addition to their internal state.
+
+Rebuilding the output state from the ground up has many benefits: Unlike using `copyWith` on the previous state, one can't forget to update dependent fields, and the mapping/combination logic can be tested in isolation (if it's a free function or static method (which is recommended to not inadvertently depend on any other instance state)).
+
+```dart
+class _GreetingState extends CombinedValueListenable<String> {
+  _GreetingState() {
+    // A `connect*` method must be called once in the constructor body
+    connect2(_firstName, _lastName, map);
+  }
+
+  final _firstName = ValueNotifier('');
+  final _lastName = ValueNotifier('');
+
+  set firstName(String value) => _firstName.value = value;
+
+  set lastName(String value) => _lastName.value = value;
+
+  static String map(String firstName, String lastName) {
+    return [
+      'Hello',
+      if (firstName != '') firstName,
+      if (lastName != '') lastName,
+    ].join(' ');
+  }
+}
+```
+
