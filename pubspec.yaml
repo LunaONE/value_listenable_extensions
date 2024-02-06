@@ -1,6 +1,6 @@
 name: value_listenable_extensions
 description: "Useful tools for working with `ValueListenable`s."
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/LunaONE/value_listenable_extensions
 
 environment:
