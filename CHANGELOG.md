@@ -1,3 +1,8 @@
+## 1.2.0
+
+* Add `StaticValueListenable` for when one wants to use a static value with `combineLatest` or in a `CombinedValueListenable`
+  * This enables the mapper function to stay clean and not having to use anything besides their given arguments
+
 ## 1.1.1
 
 * Expose `CombinedValueListenable`

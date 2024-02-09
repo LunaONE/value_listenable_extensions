@@ -4,3 +4,4 @@ export './src/connect.dart';
 export './src/disposable_value_listenable.dart';
 export './src/listen.dart';
 export './src/map.dart';
+export './src/static_value_listenable.dart';
