@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:value_listenable_extensions/src/combined_value_listenable.dart';
+import 'package:value_listenable_extensions/value_listenable_extensions.dart';
 
 void main() {
   test('CombinedValueListener: Single source / map case', () {

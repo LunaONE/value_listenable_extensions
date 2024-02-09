@@ -1,3 +1,7 @@
+## 1.1.1
+
+* Expose `CombinedValueListenable`
+
 ## 1.1.0
 
 * Add `CombinedValueListenable` to build classes based on the `combineLatest*` logic
