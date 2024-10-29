@@ -1,6 +1,6 @@
 name: value_listenable_extensions
 description: "Useful tools for working with `ValueListenable`s."
-version: 1.2.1-1
+version: 1.2.1
 homepage: https://github.com/LunaONE/value_listenable_extensions
 
 environment:
@@ -12,6 +12,8 @@ dependencies:
     sdk: flutter
 
   meta: ^1.4.0
+
+  disposable_value_listenable: ^1.0.0
 
 dev_dependencies:
   flutter_test:
