@@ -16,7 +16,6 @@ Future<void> main() async {
     Directive.import('package:flutter/foundation.dart'),
     Directive.import(
         'package:value_listenable_extensions/value_listenable_extensions.dart'),
-    Directive.import('./value_listenable_view.dart'),
   ];
 
   var funcs = <Spec>[];
@@ -56,6 +55,13 @@ Future<void> main() async {
           });
         }),
       );
+      b.optionalParameters.add(
+        Parameter((p) {
+          p.name = 'dispose';
+          p.type = refer('VoidCallback?');
+          p.named = true;
+        }),
+      );
 
       b.types.addAll([...valueTypes.map(refer), refer('U')]);
 
@@ -74,7 +80,7 @@ Future<void> main() async {
           '  dispose: () { combinedNotifier.dispose(); ${[
             for (final input in valueListenableNames)
               '$input.removeListener(onChange);'
-          ].join()} },',
+          ].join()} dispose?.call();},',
           ');',
         ].join(''),
       );
