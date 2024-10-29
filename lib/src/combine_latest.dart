@@ -6,7 +6,6 @@
 import 'package:meta/meta.dart';
 import 'package:flutter/foundation.dart';
 import 'package:value_listenable_extensions/value_listenable_extensions.dart';
-import './value_listenable_view.dart';
 
 @useResult
 DisposableValueListenable<U> combineLatest2<T1, T2, U>(
@@ -15,8 +14,9 @@ DisposableValueListenable<U> combineLatest2<T1, T2, U>(
   U Function(
     T1 v1,
     T2 v2,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -38,6 +38,7 @@ DisposableValueListenable<U> combineLatest2<T1, T2, U>(
       combinedNotifier.dispose();
       vl1.removeListener(onChange);
       vl2.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -51,8 +52,9 @@ DisposableValueListenable<U> combineLatest3<T1, T2, T3, U>(
     T1 v1,
     T2 v2,
     T3 v3,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -78,6 +80,7 @@ DisposableValueListenable<U> combineLatest3<T1, T2, T3, U>(
       vl1.removeListener(onChange);
       vl2.removeListener(onChange);
       vl3.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -93,8 +96,9 @@ DisposableValueListenable<U> combineLatest4<T1, T2, T3, T4, U>(
     T2 v2,
     T3 v3,
     T4 v4,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -124,6 +128,7 @@ DisposableValueListenable<U> combineLatest4<T1, T2, T3, T4, U>(
       vl2.removeListener(onChange);
       vl3.removeListener(onChange);
       vl4.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -141,8 +146,9 @@ DisposableValueListenable<U> combineLatest5<T1, T2, T3, T4, T5, U>(
     T3 v3,
     T4 v4,
     T5 v5,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -176,6 +182,7 @@ DisposableValueListenable<U> combineLatest5<T1, T2, T3, T4, T5, U>(
       vl3.removeListener(onChange);
       vl4.removeListener(onChange);
       vl5.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -195,8 +202,9 @@ DisposableValueListenable<U> combineLatest6<T1, T2, T3, T4, T5, T6, U>(
     T4 v4,
     T5 v5,
     T6 v6,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -234,6 +242,7 @@ DisposableValueListenable<U> combineLatest6<T1, T2, T3, T4, T5, T6, U>(
       vl4.removeListener(onChange);
       vl5.removeListener(onChange);
       vl6.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -255,8 +264,9 @@ DisposableValueListenable<U> combineLatest7<T1, T2, T3, T4, T5, T6, T7, U>(
     T5 v5,
     T6 v6,
     T7 v7,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -298,6 +308,7 @@ DisposableValueListenable<U> combineLatest7<T1, T2, T3, T4, T5, T6, T7, U>(
       vl5.removeListener(onChange);
       vl6.removeListener(onChange);
       vl7.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -321,8 +332,9 @@ DisposableValueListenable<U> combineLatest8<T1, T2, T3, T4, T5, T6, T7, T8, U>(
     T6 v6,
     T7 v7,
     T8 v8,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -368,6 +380,7 @@ DisposableValueListenable<U> combineLatest8<T1, T2, T3, T4, T5, T6, T7, T8, U>(
       vl6.removeListener(onChange);
       vl7.removeListener(onChange);
       vl8.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -394,8 +407,9 @@ DisposableValueListenable<U>
     T7 v7,
     T8 v8,
     T9 v9,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -445,6 +459,7 @@ DisposableValueListenable<U>
       vl7.removeListener(onChange);
       vl8.removeListener(onChange);
       vl9.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -473,8 +488,9 @@ DisposableValueListenable<U>
     T8 v8,
     T9 v9,
     T10 v10,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -528,6 +544,7 @@ DisposableValueListenable<U>
       vl8.removeListener(onChange);
       vl9.removeListener(onChange);
       vl10.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -558,8 +575,9 @@ DisposableValueListenable<U>
     T9 v9,
     T10 v10,
     T11 v11,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -617,6 +635,7 @@ DisposableValueListenable<U>
       vl9.removeListener(onChange);
       vl10.removeListener(onChange);
       vl11.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -649,8 +668,9 @@ DisposableValueListenable<U>
     T10 v10,
     T11 v11,
     T12 v12,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -712,6 +732,7 @@ DisposableValueListenable<U>
       vl10.removeListener(onChange);
       vl11.removeListener(onChange);
       vl12.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -746,8 +767,9 @@ DisposableValueListenable<U>
     T11 v11,
     T12 v12,
     T13 v13,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -813,6 +835,7 @@ DisposableValueListenable<U>
       vl11.removeListener(onChange);
       vl12.removeListener(onChange);
       vl13.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -849,8 +872,9 @@ DisposableValueListenable<U> combineLatest14<T1, T2, T3, T4, T5, T6, T7, T8, T9,
     T12 v12,
     T13 v13,
     T14 v14,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -920,6 +944,7 @@ DisposableValueListenable<U> combineLatest14<T1, T2, T3, T4, T5, T6, T7, T8, T9,
       vl12.removeListener(onChange);
       vl13.removeListener(onChange);
       vl14.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -958,8 +983,9 @@ DisposableValueListenable<U> combineLatest15<T1, T2, T3, T4, T5, T6, T7, T8, T9,
     T13 v13,
     T14 v14,
     T15 v15,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -1033,6 +1059,7 @@ DisposableValueListenable<U> combineLatest15<T1, T2, T3, T4, T5, T6, T7, T8, T9,
       vl13.removeListener(onChange);
       vl14.removeListener(onChange);
       vl15.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -1073,8 +1100,9 @@ DisposableValueListenable<U> combineLatest16<T1, T2, T3, T4, T5, T6, T7, T8, T9,
     T14 v14,
     T15 v15,
     T16 v16,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -1152,6 +1180,7 @@ DisposableValueListenable<U> combineLatest16<T1, T2, T3, T4, T5, T6, T7, T8, T9,
       vl14.removeListener(onChange);
       vl15.removeListener(onChange);
       vl16.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -1194,8 +1223,9 @@ DisposableValueListenable<U> combineLatest17<T1, T2, T3, T4, T5, T6, T7, T8, T9,
     T15 v15,
     T16 v16,
     T17 v17,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -1277,6 +1307,7 @@ DisposableValueListenable<U> combineLatest17<T1, T2, T3, T4, T5, T6, T7, T8, T9,
       vl15.removeListener(onChange);
       vl16.removeListener(onChange);
       vl17.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -1321,8 +1352,9 @@ DisposableValueListenable<U> combineLatest18<T1, T2, T3, T4, T5, T6, T7, T8, T9,
     T16 v16,
     T17 v17,
     T18 v18,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -1408,6 +1440,7 @@ DisposableValueListenable<U> combineLatest18<T1, T2, T3, T4, T5, T6, T7, T8, T9,
       vl16.removeListener(onChange);
       vl17.removeListener(onChange);
       vl18.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -1454,8 +1487,9 @@ DisposableValueListenable<U> combineLatest19<T1, T2, T3, T4, T5, T6, T7, T8, T9,
     T17 v17,
     T18 v18,
     T19 v19,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -1545,6 +1579,7 @@ DisposableValueListenable<U> combineLatest19<T1, T2, T3, T4, T5, T6, T7, T8, T9,
       vl17.removeListener(onChange);
       vl18.removeListener(onChange);
       vl19.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
@@ -1593,8 +1628,9 @@ DisposableValueListenable<U> combineLatest20<T1, T2, T3, T4, T5, T6, T7, T8, T9,
     T18 v18,
     T19 v19,
     T20 v20,
-  ) combine,
-) {
+  ) combine, {
+  VoidCallback? dispose,
+}) {
   final combinedNotifier = ValueNotifier<U>(combine(
     vl1.value,
     vl2.value,
@@ -1688,6 +1724,7 @@ DisposableValueListenable<U> combineLatest20<T1, T2, T3, T4, T5, T6, T7, T8, T9,
       vl18.removeListener(onChange);
       vl19.removeListener(onChange);
       vl20.removeListener(onChange);
+      dispose?.call();
     },
   );
 }
