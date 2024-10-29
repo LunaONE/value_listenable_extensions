@@ -1,3 +1,10 @@
+## 1.2.1
+
+* Add `DisposableValueListenable.transform` to fully consume and map one value listenable into another
+  * When the new one is disposed, the underlying source will be disposed with it
+* Allow specifying custom `dispose` callback for `combineLatest*` functions
+* Use `DisposableValueListenable` from shared package `disposable_value_listenable`
+
 ## 1.2.0
 
 * Add `StaticValueListenable` for when one wants to use a static value with `combineLatest` or in a `CombinedValueListenable`
