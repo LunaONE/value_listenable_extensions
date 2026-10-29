@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  dart:
+    name: Dart ${{ matrix.sdk }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        sdk:
+          - "3.10.0" # lowest supported version, see `pubspec.yaml`
+          - stable
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v7
+
+      - name: Install Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ matrix.sdk }}
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Check formatting
+        if: matrix.sdk == 'stable'
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyze
+        run: dart analyze --fatal-infos
+
+      - name: Test
+        run: dart test
+
+  flutter:
+    name: Flutter beta
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: integration/flutter
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v7
+
+      # Flutter re-exports the `listen` types starting with 3.50, which is on beta for now
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: beta
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test

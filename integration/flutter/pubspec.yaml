@@ -1,0 +1,20 @@
+name: value_listenable_extensions_flutter_integration
+description: "Checks that the extensions work with Flutter's own `ValueListenable` types."
+publish_to: none
+
+environment:
+  sdk: ^3.10.0
+  flutter: ">=3.50.0-0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  value_listenable_extensions:
+    path: ../..
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0

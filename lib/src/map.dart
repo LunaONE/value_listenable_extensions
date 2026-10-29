@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:listen/listen.dart';
 import 'package:meta/meta.dart';
 import 'package:value_listenable_extensions/value_listenable_extensions.dart';
 
@@ -14,10 +14,7 @@ extension ValueListenableMap<T> on ValueListenable<T> {
 
 class _MappedValueListenable<T, U> extends ValueNotifier<U>
     implements DisposableValueListenable<U> {
-  _MappedValueListenable(
-    this._source,
-    this._map,
-  ) : super(_map(_source.value)) {
+  _MappedValueListenable(this._source, this._map) : super(_map(_source.value)) {
     _source.addListener(_onChange);
   }
 
@@ -30,9 +27,7 @@ class _MappedValueListenable<T, U> extends ValueNotifier<U>
   }
 
   @override
-  set value(_) => throw Exception(
-        '`value` must not be set externally',
-      );
+  set value(_) => throw Exception('`value` must not be set externally');
 
   @override
   void dispose() {
