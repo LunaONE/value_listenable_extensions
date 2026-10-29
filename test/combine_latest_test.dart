@@ -28,4 +28,19 @@ void main() {
           .having((e) => e.toString(), 'message', contains('Disposed'))),
     );
   });
+
+  test('combineLatest: dispose callback', () {
+    var disposeCount = 0;
+    final combined = combineLatest2(
+      ValueNotifier<int>(1),
+      ValueNotifier<int>(2),
+      (a, b) => a + b,
+      dispose: () => disposeCount++,
+    );
+
+    expect(disposeCount, 0);
+
+    combined.dispose();
+    expect(disposeCount, 1);
+  });
 }
