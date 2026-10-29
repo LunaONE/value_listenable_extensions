@@ -14,8 +14,7 @@ abstract class CombinedValueListenable<T>
   CombinedValueListenable() {
     scheduleMicrotask(() {
       assert(
-        // ignore: unnecessary_type_check
-        _source is Object,
+        _isConnected,
         'connect*() has been invoked and a source has been set',
       );
     });
@@ -23,9 +22,12 @@ abstract class CombinedValueListenable<T>
 
   late final DisposableValueListenable<T> _source;
 
+  var _isConnected = false;
+
   @protected
   void connect1<T1>(ValueListenable<T1> vl1, T Function(T1 v1) map) {
     _source = vl1.map(map);
+    _isConnected = true;
   }
 
   @protected
@@ -35,6 +37,7 @@ abstract class CombinedValueListenable<T>
     T Function(T1 v1, T2 v2) map,
   ) {
     _source = combineLatest2(vl1, vl2, map);
+    _isConnected = true;
   }
 
   @protected
@@ -45,6 +48,7 @@ abstract class CombinedValueListenable<T>
     T Function(T1 v1, T2 v2, T3 v3) map,
   ) {
     _source = combineLatest3(vl1, vl2, vl3, map);
+    _isConnected = true;
   }
 
   @protected
@@ -56,6 +60,7 @@ abstract class CombinedValueListenable<T>
     T Function(T1 v1, T2 v2, T3 v3, T4 v4) map,
   ) {
     _source = combineLatest4(vl1, vl2, vl3, vl4, map);
+    _isConnected = true;
   }
 
   @protected
@@ -68,6 +73,7 @@ abstract class CombinedValueListenable<T>
     T Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5) map,
   ) {
     _source = combineLatest5(vl1, vl2, vl3, vl4, vl5, map);
+    _isConnected = true;
   }
 
   @protected
@@ -81,6 +87,7 @@ abstract class CombinedValueListenable<T>
     T Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6) map,
   ) {
     _source = combineLatest6(vl1, vl2, vl3, vl4, vl5, vl6, map);
+    _isConnected = true;
   }
 
   @protected
@@ -95,6 +102,7 @@ abstract class CombinedValueListenable<T>
     T Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6, T7 v7) map,
   ) {
     _source = combineLatest7(vl1, vl2, vl3, vl4, vl5, vl6, vl7, map);
+    _isConnected = true;
   }
 
   @protected
@@ -110,6 +118,7 @@ abstract class CombinedValueListenable<T>
     T Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6, T7 v7, T8 v8) map,
   ) {
     _source = combineLatest8(vl1, vl2, vl3, vl4, vl5, vl6, vl7, vl8, map);
+    _isConnected = true;
   }
 
   @protected
@@ -127,6 +136,7 @@ abstract class CombinedValueListenable<T>
     map,
   ) {
     _source = combineLatest9(vl1, vl2, vl3, vl4, vl5, vl6, vl7, vl8, vl9, map);
+    _isConnected = true;
   }
 
   @protected
@@ -168,6 +178,7 @@ abstract class CombinedValueListenable<T>
       vl10,
       map,
     );
+    _isConnected = true;
   }
 
   @protected
@@ -212,6 +223,7 @@ abstract class CombinedValueListenable<T>
       vl11,
       map,
     );
+    _isConnected = true;
   }
 
   @protected
@@ -259,6 +271,7 @@ abstract class CombinedValueListenable<T>
       vl12,
       map,
     );
+    _isConnected = true;
   }
 
   @protected
@@ -309,6 +322,7 @@ abstract class CombinedValueListenable<T>
       vl13,
       map,
     );
+    _isConnected = true;
   }
 
   @protected
@@ -362,6 +376,7 @@ abstract class CombinedValueListenable<T>
       vl14,
       map,
     );
+    _isConnected = true;
   }
 
   @protected
@@ -419,6 +434,7 @@ abstract class CombinedValueListenable<T>
       vl15,
       map,
     );
+    _isConnected = true;
   }
 
   @protected
@@ -495,6 +511,7 @@ abstract class CombinedValueListenable<T>
       vl16,
       map,
     );
+    _isConnected = true;
   }
 
   @protected
@@ -575,6 +592,7 @@ abstract class CombinedValueListenable<T>
       vl17,
       map,
     );
+    _isConnected = true;
   }
 
   @protected
@@ -659,6 +677,7 @@ abstract class CombinedValueListenable<T>
       vl18,
       map,
     );
+    _isConnected = true;
   }
 
   @protected
@@ -747,6 +766,7 @@ abstract class CombinedValueListenable<T>
       vl19,
       map,
     );
+    _isConnected = true;
   }
 
   @protected
@@ -839,6 +859,7 @@ abstract class CombinedValueListenable<T>
       vl20,
       map,
     );
+    _isConnected = true;
   }
 
   @override
