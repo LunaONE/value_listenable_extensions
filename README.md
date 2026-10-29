@@ -2,8 +2,6 @@
 
 This package includes a set of useful `ValueListenable` extensions as well as new abstractions to build your own classes with a `ValueListenable` interface.
 
-The package is pure Dart and builds on the types from [`listen`](https://pub.dev/packages/listen), which Flutter re-exports from `package:flutter/foundation.dart` starting with Flutter 3.50. For older Flutter versions, use version 1.x of this package.
-
 ## Extension methods
 
 ### `connect`
