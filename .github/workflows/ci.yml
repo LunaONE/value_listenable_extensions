@@ -39,3 +39,30 @@ jobs:
 
       - name: Test
         run: dart test
+
+  flutter:
+    name: Flutter beta
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: integration/flutter
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v7
+
+      # Flutter re-exports the `listen` types starting with 3.50, which is on beta for now
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: beta
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test
