@@ -27,8 +27,7 @@ Future<void> main() async {
       c.body = const Code('''
     scheduleMicrotask(() {
       assert(
-        // ignore: unnecessary_type_check
-        _source is Object,
+        _isConnected,
         'connect*() has been invoked and a source has been set',);
     });
 ''');
@@ -39,6 +38,12 @@ Future<void> main() async {
       f.modifier = FieldModifier.final$;
       f.type = refer('DisposableValueListenable<T>');
       f.name = '_source';
+    }));
+
+    c.fields.add(Field((f) {
+      f.modifier = FieldModifier.var$;
+      f.name = '_isConnected';
+      f.assignment = const Code('false');
     }));
 
     /// Special case for 1
@@ -59,7 +64,7 @@ Future<void> main() async {
         p.type = refer('T Function(T1 v1,)');
       }));
 
-      m.body = const Code('_source = vl1.map(map);');
+      m.body = const Code('_source = vl1.map(map); _isConnected = true;');
     }));
 
     for (var i = 2; i <= 20; i++) {
@@ -86,7 +91,7 @@ Future<void> main() async {
         m.body = Code('_source = combineLatest$i(${[
           for (var x = 1; x <= i; x++) 'vl$x',
           'map',
-        ].join(',')},);');
+        ].join(',')},); _isConnected = true;');
       }));
     }
 
