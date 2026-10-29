@@ -110,4 +110,33 @@ void main() {
 
     combined.dispose();
   });
+
+  test('combineLatestAsync on a record', () async {
+    final a = ValueNotifier(1);
+    final b = ValueNotifier(2);
+
+    final sum = (a, b).combineLatestAsync((a, b) async => a + b);
+    expect(sum.value, const AsyncLoading<int>());
+
+    await pumpEventQueue();
+    expect(sum.value, const AsyncData(3));
+
+    b.value = 5;
+    await pumpEventQueue();
+    expect(sum.value, const AsyncData(6));
+
+    sum.dispose();
+  });
+
+  test('combineLatestAsync on a record calls `dispose` on dispose', () {
+    var isDisposed = false;
+
+    final combined = (ValueNotifier(1), ValueNotifier(2)).combineLatestAsync(
+      (a, b) async => a + b,
+      dispose: () => isDisposed = true,
+    );
+
+    combined.dispose();
+    expect(isDisposed, true);
+  });
 }

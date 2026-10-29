@@ -67,7 +67,7 @@ Its value is an `AsyncState`: `AsyncLoading` until the first computation complet
 
 The caller of `mapAsync` receives ownership of the newly created `ValueListenable` and should later `dispose` it. `transformAsync` does the same, but consumes (and later disposes) its source.
 
-`combineLatestAsync*` is the asynchronous relative of `combineLatest*`, which loads from multiple sources (2 to 20) with the same semantics.
+`combineLatestAsync*` is the asynchronous relative of `combineLatest*`, which loads from multiple sources (2 to 20) with the same semantics. Like `combineLatest`, it is also available on a record of the inputs: `(userId, locale).combineLatestAsync(loadProfile)`.
 
 ```dart
 final userId = ValueNotifier('1');

@@ -16,6 +16,14 @@ extension ValueListenablesCombineLatest2<T1, T2>
   }) {
     return combineLatest2($1, $2, combine, dispose: dispose);
   }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(T1 v1, T2 v2) combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync2($1, $2, combine, dispose: dispose);
+  }
 }
 
 extension ValueListenablesCombineLatest3<T1, T2, T3>
@@ -26,6 +34,14 @@ extension ValueListenablesCombineLatest3<T1, T2, T3>
     VoidCallback? dispose,
   }) {
     return combineLatest3($1, $2, $3, combine, dispose: dispose);
+  }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(T1 v1, T2 v2, T3 v3) combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync3($1, $2, $3, combine, dispose: dispose);
   }
 }
 
@@ -44,6 +60,14 @@ extension ValueListenablesCombineLatest4<T1, T2, T3, T4>
   }) {
     return combineLatest4($1, $2, $3, $4, combine, dispose: dispose);
   }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(T1 v1, T2 v2, T3 v3, T4 v4) combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync4($1, $2, $3, $4, combine, dispose: dispose);
+  }
 }
 
 extension ValueListenablesCombineLatest5<T1, T2, T3, T4, T5>
@@ -61,6 +85,14 @@ extension ValueListenablesCombineLatest5<T1, T2, T3, T4, T5>
     VoidCallback? dispose,
   }) {
     return combineLatest5($1, $2, $3, $4, $5, combine, dispose: dispose);
+  }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5) combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync5($1, $2, $3, $4, $5, combine, dispose: dispose);
   }
 }
 
@@ -81,6 +113,23 @@ extension ValueListenablesCombineLatest6<T1, T2, T3, T4, T5, T6>
   }) {
     return combineLatest6($1, $2, $3, $4, $5, $6, combine, dispose: dispose);
   }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6) combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync6(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      combine,
+      dispose: dispose,
+    );
+  }
 }
 
 extension ValueListenablesCombineLatest7<T1, T2, T3, T4, T5, T6, T7>
@@ -100,6 +149,25 @@ extension ValueListenablesCombineLatest7<T1, T2, T3, T4, T5, T6, T7>
     VoidCallback? dispose,
   }) {
     return combineLatest7(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      combine,
+      dispose: dispose,
+    );
+  }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6, T7 v7)
+    combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync7(
       $1,
       $2,
       $3,
@@ -144,6 +212,26 @@ extension ValueListenablesCombineLatest8<T1, T2, T3, T4, T5, T6, T7, T8>
       dispose: dispose,
     );
   }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6, T7 v7, T8 v8)
+    combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync8(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      $8,
+      combine,
+      dispose: dispose,
+    );
+  }
 }
 
 extension ValueListenablesCombineLatest9<T1, T2, T3, T4, T5, T6, T7, T8, T9>
@@ -166,6 +254,37 @@ extension ValueListenablesCombineLatest9<T1, T2, T3, T4, T5, T6, T7, T8, T9>
     VoidCallback? dispose,
   }) {
     return combineLatest9(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      $8,
+      $9,
+      combine,
+      dispose: dispose,
+    );
+  }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(
+      T1 v1,
+      T2 v2,
+      T3 v3,
+      T4 v4,
+      T5 v5,
+      T6 v6,
+      T7 v7,
+      T8 v8,
+      T9 v9,
+    )
+    combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync9(
       $1,
       $2,
       $3,
@@ -224,6 +343,39 @@ extension ValueListenablesCombineLatest10<
     VoidCallback? dispose,
   }) {
     return combineLatest10(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      $8,
+      $9,
+      $10,
+      combine,
+      dispose: dispose,
+    );
+  }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(
+      T1 v1,
+      T2 v2,
+      T3 v3,
+      T4 v4,
+      T5 v5,
+      T6 v6,
+      T7 v7,
+      T8 v8,
+      T9 v9,
+      T10 v10,
+    )
+    combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync10(
       $1,
       $2,
       $3,
@@ -301,6 +453,41 @@ extension ValueListenablesCombineLatest11<
       dispose: dispose,
     );
   }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(
+      T1 v1,
+      T2 v2,
+      T3 v3,
+      T4 v4,
+      T5 v5,
+      T6 v6,
+      T7 v7,
+      T8 v8,
+      T9 v9,
+      T10 v10,
+      T11 v11,
+    )
+    combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync11(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      $8,
+      $9,
+      $10,
+      $11,
+      combine,
+      dispose: dispose,
+    );
+  }
 }
 
 extension ValueListenablesCombineLatest12<
@@ -352,6 +539,43 @@ extension ValueListenablesCombineLatest12<
     VoidCallback? dispose,
   }) {
     return combineLatest12(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      $8,
+      $9,
+      $10,
+      $11,
+      $12,
+      combine,
+      dispose: dispose,
+    );
+  }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(
+      T1 v1,
+      T2 v2,
+      T3 v3,
+      T4 v4,
+      T5 v5,
+      T6 v6,
+      T7 v7,
+      T8 v8,
+      T9 v9,
+      T10 v10,
+      T11 v11,
+      T12 v12,
+    )
+    combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync12(
       $1,
       $2,
       $3,
@@ -439,6 +663,45 @@ extension ValueListenablesCombineLatest13<
       dispose: dispose,
     );
   }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(
+      T1 v1,
+      T2 v2,
+      T3 v3,
+      T4 v4,
+      T5 v5,
+      T6 v6,
+      T7 v7,
+      T8 v8,
+      T9 v9,
+      T10 v10,
+      T11 v11,
+      T12 v12,
+      T13 v13,
+    )
+    combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync13(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      $8,
+      $9,
+      $10,
+      $11,
+      $12,
+      $13,
+      combine,
+      dispose: dispose,
+    );
+  }
 }
 
 extension ValueListenablesCombineLatest14<
@@ -496,6 +759,47 @@ extension ValueListenablesCombineLatest14<
     VoidCallback? dispose,
   }) {
     return combineLatest14(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      $8,
+      $9,
+      $10,
+      $11,
+      $12,
+      $13,
+      $14,
+      combine,
+      dispose: dispose,
+    );
+  }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(
+      T1 v1,
+      T2 v2,
+      T3 v3,
+      T4 v4,
+      T5 v5,
+      T6 v6,
+      T7 v7,
+      T8 v8,
+      T9 v9,
+      T10 v10,
+      T11 v11,
+      T12 v12,
+      T13 v13,
+      T14 v14,
+    )
+    combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync14(
       $1,
       $2,
       $3,
@@ -593,6 +897,49 @@ extension ValueListenablesCombineLatest15<
       dispose: dispose,
     );
   }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(
+      T1 v1,
+      T2 v2,
+      T3 v3,
+      T4 v4,
+      T5 v5,
+      T6 v6,
+      T7 v7,
+      T8 v8,
+      T9 v9,
+      T10 v10,
+      T11 v11,
+      T12 v12,
+      T13 v13,
+      T14 v14,
+      T15 v15,
+    )
+    combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync15(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      $8,
+      $9,
+      $10,
+      $11,
+      $12,
+      $13,
+      $14,
+      $15,
+      combine,
+      dispose: dispose,
+    );
+  }
 }
 
 extension ValueListenablesCombineLatest16<
@@ -656,6 +1003,51 @@ extension ValueListenablesCombineLatest16<
     VoidCallback? dispose,
   }) {
     return combineLatest16(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      $8,
+      $9,
+      $10,
+      $11,
+      $12,
+      $13,
+      $14,
+      $15,
+      $16,
+      combine,
+      dispose: dispose,
+    );
+  }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(
+      T1 v1,
+      T2 v2,
+      T3 v3,
+      T4 v4,
+      T5 v5,
+      T6 v6,
+      T7 v7,
+      T8 v8,
+      T9 v9,
+      T10 v10,
+      T11 v11,
+      T12 v12,
+      T13 v13,
+      T14 v14,
+      T15 v15,
+      T16 v16,
+    )
+    combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync16(
       $1,
       $2,
       $3,
@@ -763,6 +1155,53 @@ extension ValueListenablesCombineLatest17<
       dispose: dispose,
     );
   }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(
+      T1 v1,
+      T2 v2,
+      T3 v3,
+      T4 v4,
+      T5 v5,
+      T6 v6,
+      T7 v7,
+      T8 v8,
+      T9 v9,
+      T10 v10,
+      T11 v11,
+      T12 v12,
+      T13 v13,
+      T14 v14,
+      T15 v15,
+      T16 v16,
+      T17 v17,
+    )
+    combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync17(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      $8,
+      $9,
+      $10,
+      $11,
+      $12,
+      $13,
+      $14,
+      $15,
+      $16,
+      $17,
+      combine,
+      dispose: dispose,
+    );
+  }
 }
 
 extension ValueListenablesCombineLatest18<
@@ -832,6 +1271,55 @@ extension ValueListenablesCombineLatest18<
     VoidCallback? dispose,
   }) {
     return combineLatest18(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      $8,
+      $9,
+      $10,
+      $11,
+      $12,
+      $13,
+      $14,
+      $15,
+      $16,
+      $17,
+      $18,
+      combine,
+      dispose: dispose,
+    );
+  }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(
+      T1 v1,
+      T2 v2,
+      T3 v3,
+      T4 v4,
+      T5 v5,
+      T6 v6,
+      T7 v7,
+      T8 v8,
+      T9 v9,
+      T10 v10,
+      T11 v11,
+      T12 v12,
+      T13 v13,
+      T14 v14,
+      T15 v15,
+      T16 v16,
+      T17 v17,
+      T18 v18,
+    )
+    combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync18(
       $1,
       $2,
       $3,
@@ -949,6 +1437,57 @@ extension ValueListenablesCombineLatest19<
       dispose: dispose,
     );
   }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(
+      T1 v1,
+      T2 v2,
+      T3 v3,
+      T4 v4,
+      T5 v5,
+      T6 v6,
+      T7 v7,
+      T8 v8,
+      T9 v9,
+      T10 v10,
+      T11 v11,
+      T12 v12,
+      T13 v13,
+      T14 v14,
+      T15 v15,
+      T16 v16,
+      T17 v17,
+      T18 v18,
+      T19 v19,
+    )
+    combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync19(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      $8,
+      $9,
+      $10,
+      $11,
+      $12,
+      $13,
+      $14,
+      $15,
+      $16,
+      $17,
+      $18,
+      $19,
+      combine,
+      dispose: dispose,
+    );
+  }
 }
 
 extension ValueListenablesCombineLatest20<
@@ -1024,6 +1563,59 @@ extension ValueListenablesCombineLatest20<
     VoidCallback? dispose,
   }) {
     return combineLatest20(
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7,
+      $8,
+      $9,
+      $10,
+      $11,
+      $12,
+      $13,
+      $14,
+      $15,
+      $16,
+      $17,
+      $18,
+      $19,
+      $20,
+      combine,
+      dispose: dispose,
+    );
+  }
+
+  @useResult
+  DisposableAsyncValueListenable<U> combineLatestAsync<U>(
+    Future<U> Function(
+      T1 v1,
+      T2 v2,
+      T3 v3,
+      T4 v4,
+      T5 v5,
+      T6 v6,
+      T7 v7,
+      T8 v8,
+      T9 v9,
+      T10 v10,
+      T11 v11,
+      T12 v12,
+      T13 v13,
+      T14 v14,
+      T15 v15,
+      T16 v16,
+      T17 v17,
+      T18 v18,
+      T19 v19,
+      T20 v20,
+    )
+    combine, {
+    VoidCallback? dispose,
+  }) {
+    return combineLatestAsync20(
       $1,
       $2,
       $3,

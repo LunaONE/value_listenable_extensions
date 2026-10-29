@@ -63,6 +63,39 @@ Future<void> main() async {
       );
     });
 
+    final combineLatestAsyncMethod = Method((b) {
+      b.annotations.add(const CodeExpression(Code('useResult')));
+      b.name = 'combineLatestAsync';
+
+      b.requiredParameters.add(
+        Parameter((p) {
+          p.name = 'combine';
+          p.type = FunctionType((f) {
+            f.requiredParameters.addAll([
+              for (final (i, type) in valueTypes.indexed)
+                refer('$type ${valueNames[i]}'),
+            ]);
+
+            f.returnType = refer('Future<U>');
+          });
+        }),
+      );
+      b.optionalParameters.add(
+        Parameter((p) {
+          p.name = 'dispose';
+          p.type = refer('VoidCallback?');
+          p.named = true;
+        }),
+      );
+
+      b.types.add(refer('U'));
+
+      b.returns = refer('DisposableAsyncValueListenable<U>');
+      b.body = Code(
+        'return combineLatestAsync$i($fields, combine, dispose: dispose,);',
+      );
+    });
+
     extensions.add(
       Extension((b) {
         b.name = 'ValueListenablesCombineLatest$i';
@@ -70,7 +103,7 @@ Future<void> main() async {
         b.on = refer(
           '(${valueTypes.map((t) => 'ValueListenable<$t>').join(',')})',
         );
-        b.methods.add(combineLatestMethod);
+        b.methods.addAll([combineLatestMethod, combineLatestAsyncMethod]);
       }),
     );
   }
