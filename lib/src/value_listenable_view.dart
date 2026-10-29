@@ -33,8 +33,12 @@ class ValueListenableView<T> implements DisposableValueListenable<T> {
 
   @override
   void removeListener(void Function() listener) {
-    assert(!_isDisposed);
-
+    // allowed after `dispose`, like `ChangeNotifier.removeListener`, as listeners
+    // are often cleaned up after their owner has been disposed
+    // (https://github.com/flutter/flutter/pull/97988)
+    //
+    // still forwarded, because a view without a `dispose` callback does not own
+    // the notifier, which would otherwise keep notifying the listener
     _notifier.removeListener(listener);
   }
 
