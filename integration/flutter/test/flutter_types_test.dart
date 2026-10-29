@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -46,6 +48,44 @@ void main() {
   ) async {
     await tester.pumpWidget(_ValueText(StaticValueListenable('static')));
     expect(find.text('static'), findsOneWidget);
+  });
+
+  testWidgets('mapAsync: switch over `AsyncState` in a builder', (
+    tester,
+  ) async {
+    final userId = ValueNotifier<int>(1);
+    final requests = <int, Completer<String>>{};
+    final profile = userId.mapAsync(
+      (id) => (requests[id] = Completer()).future,
+    );
+    addTearDown(profile.dispose);
+
+    await tester.pumpWidget(
+      Directionality(
+        textDirection: TextDirection.ltr,
+        child: ValueListenableBuilder(
+          valueListenable: profile,
+          builder: (context, state, _) => switch (state) {
+            AsyncLoading() => const Text('loading'),
+            AsyncData(:final value) => Text(value),
+            AsyncError(previous: AsyncData(:final value)) => Text(
+              'failed, showing $value',
+            ),
+            AsyncError() => const Text('failed'),
+          },
+        ),
+      ),
+    );
+    expect(find.text('loading'), findsOneWidget);
+
+    requests[1]!.complete('Profile 1');
+    await tester.pumpAndSettle();
+    expect(find.text('Profile 1'), findsOneWidget);
+
+    userId.value = 2;
+    requests[2]!.completeError(Exception('offline'));
+    await tester.pumpAndSettle();
+    expect(find.text('failed, showing Profile 1'), findsOneWidget);
   });
 
   test('CombinedValueListenable: connects Flutter `ValueNotifier`s', () {
