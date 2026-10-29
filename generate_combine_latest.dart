@@ -100,8 +100,6 @@ Future<void> main() async {
     ...funcs,
   ].map((e) => e.accept(emitter)).join('\n');
 
-  final file = await File('./lib/src/combine_latest.dart')
-      .open(mode: FileMode.writeOnly);
-
-  await file.writeString(DartFormatter(pageWidth: 80).format(code));
+  await File('./lib/src/combine_latest.dart')
+      .writeAsString(DartFormatter(pageWidth: 80).format(code));
 }

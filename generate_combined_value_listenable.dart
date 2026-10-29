@@ -130,8 +130,6 @@ Future<void> main() async {
       .map((e) => e.accept(emitter))
       .join('\n');
 
-  final file = await File('./lib/src/combined_value_listenable.dart')
-      .open(mode: FileMode.writeOnly);
-
-  await file.writeString(DartFormatter(pageWidth: 80).format(code));
+  await File('./lib/src/combined_value_listenable.dart')
+      .writeAsString(DartFormatter(pageWidth: 80).format(code));
 }
