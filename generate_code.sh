@@ -1,2 +1,3 @@
 dart run generate_combine_latest.dart
+dart run generate_combine_latest_async.dart
 dart run generate_combined_value_listenable.dart

@@ -3,6 +3,7 @@
 * Add `mapAsync` and `DisposableValueListenable.transformAsync` to map into a value listenable with an asynchronous computation
   * The value is an `AsyncState` (`AsyncLoading`, `AsyncData`, or `AsyncError` with the `previous` data), the running computation is exposed via `isUpdating`
   * Only the result for the latest source value is exposed
+* Add `combineLatestAsync*` to combine multiple value listenables with an asynchronous computation, like `mapAsync`
 
 ## 2.0.1
 
