@@ -45,6 +45,7 @@ Future<void> main() async {
     /// Special case for 1
     c.methods.add(Method((m) {
       m.annotations.add(const CodeExpression(Code('protected')));
+      m.returns = refer('void');
       m.name = 'connect1';
       m.types.addAll([
         refer('T1'),
@@ -66,6 +67,7 @@ Future<void> main() async {
     for (var i = 2; i <= 20; i++) {
       c.methods.add(Method((m) {
         m.annotations.add(const CodeExpression(Code('protected')));
+        m.returns = refer('void');
         m.name = 'connect$i';
         m.types.addAll([
           for (var x = 1; x <= i; x++) refer('T$x'),
@@ -95,6 +97,7 @@ Future<void> main() async {
     for (final method in ['addListener', 'removeListener']) {
       c.methods.add(Method((m) {
         m.annotations.add(const CodeExpression(Code('override')));
+        m.returns = refer('void');
         m.name = method;
         m.requiredParameters.add(Parameter((p) {
           p.name = 'listener';
@@ -115,6 +118,7 @@ Future<void> main() async {
 
     c.methods.add(Method((m) {
       m.annotations.add(const CodeExpression(Code('override')));
+      m.returns = refer('void');
       m.name = 'dispose';
       m.body = const Code('_source.dispose();');
     }));

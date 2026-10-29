@@ -24,12 +24,12 @@ abstract class CombinedValueListenable<T>
   late final DisposableValueListenable<T> _source;
 
   @protected
-  connect1<T1>(ValueListenable<T1> vl1, T Function(T1 v1) map) {
+  void connect1<T1>(ValueListenable<T1> vl1, T Function(T1 v1) map) {
     _source = vl1.map(map);
   }
 
   @protected
-  connect2<T1, T2>(
+  void connect2<T1, T2>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     T Function(T1 v1, T2 v2) map,
@@ -38,7 +38,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect3<T1, T2, T3>(
+  void connect3<T1, T2, T3>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -48,7 +48,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect4<T1, T2, T3, T4>(
+  void connect4<T1, T2, T3, T4>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -59,7 +59,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect5<T1, T2, T3, T4, T5>(
+  void connect5<T1, T2, T3, T4, T5>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -71,7 +71,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect6<T1, T2, T3, T4, T5, T6>(
+  void connect6<T1, T2, T3, T4, T5, T6>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -84,7 +84,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect7<T1, T2, T3, T4, T5, T6, T7>(
+  void connect7<T1, T2, T3, T4, T5, T6, T7>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -98,7 +98,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect8<T1, T2, T3, T4, T5, T6, T7, T8>(
+  void connect8<T1, T2, T3, T4, T5, T6, T7, T8>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -113,7 +113,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect9<T1, T2, T3, T4, T5, T6, T7, T8, T9>(
+  void connect9<T1, T2, T3, T4, T5, T6, T7, T8, T9>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -130,7 +130,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(
+  void connect10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -171,7 +171,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(
+  void connect11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -215,7 +215,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect12<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(
+  void connect12<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -262,7 +262,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect13<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
+  void connect13<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -312,7 +312,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect14<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(
+  void connect14<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -365,6 +365,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
+  void
   connect15<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
@@ -421,7 +422,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect16<
+  void connect16<
     T1,
     T2,
     T3,
@@ -497,7 +498,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect17<
+  void connect17<
     T1,
     T2,
     T3,
@@ -577,7 +578,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect18<
+  void connect18<
     T1,
     T2,
     T3,
@@ -661,7 +662,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect19<
+  void connect19<
     T1,
     T2,
     T3,
@@ -749,7 +750,7 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect20<
+  void connect20<
     T1,
     T2,
     T3,
@@ -841,12 +842,12 @@ abstract class CombinedValueListenable<T>
   }
 
   @override
-  addListener(VoidCallback listener) {
+  void addListener(VoidCallback listener) {
     _source.addListener(listener);
   }
 
   @override
-  removeListener(VoidCallback listener) {
+  void removeListener(VoidCallback listener) {
     _source.removeListener(listener);
   }
 
@@ -854,7 +855,7 @@ abstract class CombinedValueListenable<T>
   T get value => _source.value;
 
   @override
-  dispose() {
+  void dispose() {
     _source.dispose();
   }
 }
