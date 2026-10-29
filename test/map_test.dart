@@ -18,4 +18,13 @@ void main() {
     // previous value is retained, as connect is severed
     expect(mapped.value, 3);
   });
+
+  test('map: value can not be set from the outside', () {
+    final mapped = ValueNotifier<String>('a').map((value) => value.length);
+
+    expect(() => (mapped as ValueNotifier<int>).value = 2, throwsException);
+    expect(mapped.value, 1);
+
+    mapped.dispose();
+  });
 }
