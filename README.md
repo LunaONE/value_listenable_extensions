@@ -113,6 +113,12 @@ b.value = 9;
 maxValue.dispose();
 ```
 
+The same is available on a record of the inputs, so the arity doesn't have to be spelled out:
+
+```dart
+final maxValue = (a, b).combineLatest((a, b) => max(a, b));
+```
+
 ## `CombinedValueListenable`
 
 The `class`-based relative of `combineLatest*` is useful to build state objects which are made up of small, independent parts or that depend on external inputs in addition to their internal state.

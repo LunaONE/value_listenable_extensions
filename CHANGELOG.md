@@ -8,6 +8,7 @@
 * Add `mapAsync` and `DisposableValueListenable.transformAsync` to map into a value listenable with an asynchronous computation
   * The value is an `AsyncState` (`AsyncLoading`, `AsyncData`, or `AsyncError` with the `previous` data), the running computation is exposed via `isUpdating`
   * Only the result for the latest source value is exposed
+* Add `combineLatest` on records of 2 to 20 value listenables, e.g. `(a, b).combineLatest((a, b) => a + b)`, so the arity doesn't have to be spelled out
 * Add `combineLatestAsync*` to combine multiple value listenables with an asynchronous computation, like `mapAsync`
 * Require Dart 3.10
 
