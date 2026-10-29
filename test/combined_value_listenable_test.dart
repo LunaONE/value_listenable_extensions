@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:value_listenable_extensions/value_listenable_extensions.dart';
@@ -66,7 +68,18 @@ void main() {
 
     greeting.dispose();
   });
+
+  test('CombinedValueListener: Asserts that connect*() is called', () async {
+    final errors = <Object>[];
+    runZonedGuarded(_UnconnectedValueListenable.new, (e, _) => errors.add(e));
+
+    await Future<void>.delayed(Duration.zero);
+
+    expect(errors, [isA<AssertionError>()]);
+  });
 }
+
+class _UnconnectedValueListenable extends CombinedValueListenable<int> {}
 
 class _StringLengthMappingValueListenable extends CombinedValueListenable<int> {
   _StringLengthMappingValueListenable(ValueNotifier<String> source) {
