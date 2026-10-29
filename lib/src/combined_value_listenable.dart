@@ -4,7 +4,9 @@
 //
 
 import 'dart:async';
-import 'package:flutter/foundation.dart';
+
+import 'package:meta/meta.dart';
+import 'package:listen/listen.dart';
 import 'package:value_listenable_extensions/value_listenable_extensions.dart';
 
 abstract class CombinedValueListenable<T>
@@ -22,12 +24,7 @@ abstract class CombinedValueListenable<T>
   late final DisposableValueListenable<T> _source;
 
   @protected
-  connect1<T1>(
-    ValueListenable<T1> vl1,
-    T Function(
-      T1 v1,
-    ) map,
-  ) {
+  connect1<T1>(ValueListenable<T1> vl1, T Function(T1 v1) map) {
     _source = vl1.map(map);
   }
 
@@ -35,16 +32,9 @@ abstract class CombinedValueListenable<T>
   connect2<T1, T2>(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
-    T Function(
-      T1 v1,
-      T2 v2,
-    ) map,
+    T Function(T1 v1, T2 v2) map,
   ) {
-    _source = combineLatest2(
-      vl1,
-      vl2,
-      map,
-    );
+    _source = combineLatest2(vl1, vl2, map);
   }
 
   @protected
@@ -52,18 +42,9 @@ abstract class CombinedValueListenable<T>
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
-    T Function(
-      T1 v1,
-      T2 v2,
-      T3 v3,
-    ) map,
+    T Function(T1 v1, T2 v2, T3 v3) map,
   ) {
-    _source = combineLatest3(
-      vl1,
-      vl2,
-      vl3,
-      map,
-    );
+    _source = combineLatest3(vl1, vl2, vl3, map);
   }
 
   @protected
@@ -72,20 +53,9 @@ abstract class CombinedValueListenable<T>
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
     ValueListenable<T4> vl4,
-    T Function(
-      T1 v1,
-      T2 v2,
-      T3 v3,
-      T4 v4,
-    ) map,
+    T Function(T1 v1, T2 v2, T3 v3, T4 v4) map,
   ) {
-    _source = combineLatest4(
-      vl1,
-      vl2,
-      vl3,
-      vl4,
-      map,
-    );
+    _source = combineLatest4(vl1, vl2, vl3, vl4, map);
   }
 
   @protected
@@ -95,22 +65,9 @@ abstract class CombinedValueListenable<T>
     ValueListenable<T3> vl3,
     ValueListenable<T4> vl4,
     ValueListenable<T5> vl5,
-    T Function(
-      T1 v1,
-      T2 v2,
-      T3 v3,
-      T4 v4,
-      T5 v5,
-    ) map,
+    T Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5) map,
   ) {
-    _source = combineLatest5(
-      vl1,
-      vl2,
-      vl3,
-      vl4,
-      vl5,
-      map,
-    );
+    _source = combineLatest5(vl1, vl2, vl3, vl4, vl5, map);
   }
 
   @protected
@@ -121,24 +78,9 @@ abstract class CombinedValueListenable<T>
     ValueListenable<T4> vl4,
     ValueListenable<T5> vl5,
     ValueListenable<T6> vl6,
-    T Function(
-      T1 v1,
-      T2 v2,
-      T3 v3,
-      T4 v4,
-      T5 v5,
-      T6 v6,
-    ) map,
+    T Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6) map,
   ) {
-    _source = combineLatest6(
-      vl1,
-      vl2,
-      vl3,
-      vl4,
-      vl5,
-      vl6,
-      map,
-    );
+    _source = combineLatest6(vl1, vl2, vl3, vl4, vl5, vl6, map);
   }
 
   @protected
@@ -150,26 +92,9 @@ abstract class CombinedValueListenable<T>
     ValueListenable<T5> vl5,
     ValueListenable<T6> vl6,
     ValueListenable<T7> vl7,
-    T Function(
-      T1 v1,
-      T2 v2,
-      T3 v3,
-      T4 v4,
-      T5 v5,
-      T6 v6,
-      T7 v7,
-    ) map,
+    T Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6, T7 v7) map,
   ) {
-    _source = combineLatest7(
-      vl1,
-      vl2,
-      vl3,
-      vl4,
-      vl5,
-      vl6,
-      vl7,
-      map,
-    );
+    _source = combineLatest7(vl1, vl2, vl3, vl4, vl5, vl6, vl7, map);
   }
 
   @protected
@@ -182,28 +107,9 @@ abstract class CombinedValueListenable<T>
     ValueListenable<T6> vl6,
     ValueListenable<T7> vl7,
     ValueListenable<T8> vl8,
-    T Function(
-      T1 v1,
-      T2 v2,
-      T3 v3,
-      T4 v4,
-      T5 v5,
-      T6 v6,
-      T7 v7,
-      T8 v8,
-    ) map,
+    T Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6, T7 v7, T8 v8) map,
   ) {
-    _source = combineLatest8(
-      vl1,
-      vl2,
-      vl3,
-      vl4,
-      vl5,
-      vl6,
-      vl7,
-      vl8,
-      map,
-    );
+    _source = combineLatest8(vl1, vl2, vl3, vl4, vl5, vl6, vl7, vl8, map);
   }
 
   @protected
@@ -217,30 +123,10 @@ abstract class CombinedValueListenable<T>
     ValueListenable<T7> vl7,
     ValueListenable<T8> vl8,
     ValueListenable<T9> vl9,
-    T Function(
-      T1 v1,
-      T2 v2,
-      T3 v3,
-      T4 v4,
-      T5 v5,
-      T6 v6,
-      T7 v7,
-      T8 v8,
-      T9 v9,
-    ) map,
+    T Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6, T7 v7, T8 v8, T9 v9)
+    map,
   ) {
-    _source = combineLatest9(
-      vl1,
-      vl2,
-      vl3,
-      vl4,
-      vl5,
-      vl6,
-      vl7,
-      vl8,
-      vl9,
-      map,
-    );
+    _source = combineLatest9(vl1, vl2, vl3, vl4, vl5, vl6, vl7, vl8, vl9, map);
   }
 
   @protected
@@ -266,7 +152,8 @@ abstract class CombinedValueListenable<T>
       T8 v8,
       T9 v9,
       T10 v10,
-    ) map,
+    )
+    map,
   ) {
     _source = combineLatest10(
       vl1,
@@ -308,7 +195,8 @@ abstract class CombinedValueListenable<T>
       T9 v9,
       T10 v10,
       T11 v11,
-    ) map,
+    )
+    map,
   ) {
     _source = combineLatest11(
       vl1,
@@ -353,7 +241,8 @@ abstract class CombinedValueListenable<T>
       T10 v10,
       T11 v11,
       T12 v12,
-    ) map,
+    )
+    map,
   ) {
     _source = combineLatest12(
       vl1,
@@ -401,7 +290,8 @@ abstract class CombinedValueListenable<T>
       T11 v11,
       T12 v12,
       T13 v13,
-    ) map,
+    )
+    map,
   ) {
     _source = combineLatest13(
       vl1,
@@ -452,7 +342,8 @@ abstract class CombinedValueListenable<T>
       T12 v12,
       T13 v13,
       T14 v14,
-    ) map,
+    )
+    map,
   ) {
     _source = combineLatest14(
       vl1,
@@ -506,7 +397,8 @@ abstract class CombinedValueListenable<T>
       T13 v13,
       T14 v14,
       T15 v15,
-    ) map,
+    )
+    map,
   ) {
     _source = combineLatest15(
       vl1,
@@ -529,8 +421,24 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect16<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15,
-      T16>(
+  connect16<
+    T1,
+    T2,
+    T3,
+    T4,
+    T5,
+    T6,
+    T7,
+    T8,
+    T9,
+    T10,
+    T11,
+    T12,
+    T13,
+    T14,
+    T15,
+    T16
+  >(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -564,7 +472,8 @@ abstract class CombinedValueListenable<T>
       T14 v14,
       T15 v15,
       T16 v16,
-    ) map,
+    )
+    map,
   ) {
     _source = combineLatest16(
       vl1,
@@ -588,8 +497,25 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect17<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15,
-      T16, T17>(
+  connect17<
+    T1,
+    T2,
+    T3,
+    T4,
+    T5,
+    T6,
+    T7,
+    T8,
+    T9,
+    T10,
+    T11,
+    T12,
+    T13,
+    T14,
+    T15,
+    T16,
+    T17
+  >(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -625,7 +551,8 @@ abstract class CombinedValueListenable<T>
       T15 v15,
       T16 v16,
       T17 v17,
-    ) map,
+    )
+    map,
   ) {
     _source = combineLatest17(
       vl1,
@@ -650,8 +577,26 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect18<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15,
-      T16, T17, T18>(
+  connect18<
+    T1,
+    T2,
+    T3,
+    T4,
+    T5,
+    T6,
+    T7,
+    T8,
+    T9,
+    T10,
+    T11,
+    T12,
+    T13,
+    T14,
+    T15,
+    T16,
+    T17,
+    T18
+  >(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -689,7 +634,8 @@ abstract class CombinedValueListenable<T>
       T16 v16,
       T17 v17,
       T18 v18,
-    ) map,
+    )
+    map,
   ) {
     _source = combineLatest18(
       vl1,
@@ -715,8 +661,27 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect19<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15,
-      T16, T17, T18, T19>(
+  connect19<
+    T1,
+    T2,
+    T3,
+    T4,
+    T5,
+    T6,
+    T7,
+    T8,
+    T9,
+    T10,
+    T11,
+    T12,
+    T13,
+    T14,
+    T15,
+    T16,
+    T17,
+    T18,
+    T19
+  >(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -756,7 +721,8 @@ abstract class CombinedValueListenable<T>
       T17 v17,
       T18 v18,
       T19 v19,
-    ) map,
+    )
+    map,
   ) {
     _source = combineLatest19(
       vl1,
@@ -783,8 +749,28 @@ abstract class CombinedValueListenable<T>
   }
 
   @protected
-  connect20<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15,
-      T16, T17, T18, T19, T20>(
+  connect20<
+    T1,
+    T2,
+    T3,
+    T4,
+    T5,
+    T6,
+    T7,
+    T8,
+    T9,
+    T10,
+    T11,
+    T12,
+    T13,
+    T14,
+    T15,
+    T16,
+    T17,
+    T18,
+    T19,
+    T20
+  >(
     ValueListenable<T1> vl1,
     ValueListenable<T2> vl2,
     ValueListenable<T3> vl3,
@@ -826,7 +812,8 @@ abstract class CombinedValueListenable<T>
       T18 v18,
       T19 v19,
       T20 v20,
-    ) map,
+    )
+    map,
   ) {
     _source = combineLatest20(
       vl1,
@@ -854,12 +841,12 @@ abstract class CombinedValueListenable<T>
   }
 
   @override
-  void addListener(VoidCallback listener) {
+  addListener(VoidCallback listener) {
     _source.addListener(listener);
   }
 
   @override
-  void removeListener(VoidCallback listener) {
+  removeListener(VoidCallback listener) {
     _source.removeListener(listener);
   }
 
@@ -867,7 +854,7 @@ abstract class CombinedValueListenable<T>
   T get value => _source.value;
 
   @override
-  void dispose() {
+  dispose() {
     _source.dispose();
   }
 }

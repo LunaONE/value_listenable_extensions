@@ -4,29 +4,20 @@
 //
 
 import 'package:meta/meta.dart';
-import 'package:flutter/foundation.dart';
+import 'package:listen/listen.dart';
 import 'package:value_listenable_extensions/value_listenable_extensions.dart';
 
 @useResult
 DisposableValueListenable<U> combineLatest2<T1, T2, U>(
   ValueListenable<T1> vl1,
   ValueListenable<T2> vl2,
-  U Function(
-    T1 v1,
-    T2 v2,
-  ) combine, {
+  U Function(T1 v1, T2 v2) combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(combine(vl1.value, vl2.value));
 
   void onChange() {
-    combinedNotifier.value = combine(
-      vl1.value,
-      vl2.value,
-    );
+    combinedNotifier.value = combine(vl1.value, vl2.value);
   }
 
   vl1.addListener(onChange);
@@ -48,25 +39,15 @@ DisposableValueListenable<U> combineLatest3<T1, T2, T3, U>(
   ValueListenable<T1> vl1,
   ValueListenable<T2> vl2,
   ValueListenable<T3> vl3,
-  U Function(
-    T1 v1,
-    T2 v2,
-    T3 v3,
-  ) combine, {
+  U Function(T1 v1, T2 v2, T3 v3) combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(vl1.value, vl2.value, vl3.value),
+  );
 
   void onChange() {
-    combinedNotifier.value = combine(
-      vl1.value,
-      vl2.value,
-      vl3.value,
-    );
+    combinedNotifier.value = combine(vl1.value, vl2.value, vl3.value);
   }
 
   vl1.addListener(onChange);
@@ -91,20 +72,12 @@ DisposableValueListenable<U> combineLatest4<T1, T2, T3, T4, U>(
   ValueListenable<T2> vl2,
   ValueListenable<T3> vl3,
   ValueListenable<T4> vl4,
-  U Function(
-    T1 v1,
-    T2 v2,
-    T3 v3,
-    T4 v4,
-  ) combine, {
+  U Function(T1 v1, T2 v2, T3 v3, T4 v4) combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(vl1.value, vl2.value, vl3.value, vl4.value),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -140,22 +113,12 @@ DisposableValueListenable<U> combineLatest5<T1, T2, T3, T4, T5, U>(
   ValueListenable<T3> vl3,
   ValueListenable<T4> vl4,
   ValueListenable<T5> vl5,
-  U Function(
-    T1 v1,
-    T2 v2,
-    T3 v3,
-    T4 v4,
-    T5 v5,
-  ) combine, {
+  U Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5) combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(vl1.value, vl2.value, vl3.value, vl4.value, vl5.value),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -195,24 +158,12 @@ DisposableValueListenable<U> combineLatest6<T1, T2, T3, T4, T5, T6, U>(
   ValueListenable<T4> vl4,
   ValueListenable<T5> vl5,
   ValueListenable<T6> vl6,
-  U Function(
-    T1 v1,
-    T2 v2,
-    T3 v3,
-    T4 v4,
-    T5 v5,
-    T6 v6,
-  ) combine, {
+  U Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6) combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(vl1.value, vl2.value, vl3.value, vl4.value, vl5.value, vl6.value),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -256,26 +207,20 @@ DisposableValueListenable<U> combineLatest7<T1, T2, T3, T4, T5, T6, T7, U>(
   ValueListenable<T5> vl5,
   ValueListenable<T6> vl6,
   ValueListenable<T7> vl7,
-  U Function(
-    T1 v1,
-    T2 v2,
-    T3 v3,
-    T4 v4,
-    T5 v5,
-    T6 v6,
-    T7 v7,
-  ) combine, {
+  U Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6, T7 v7) combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-    vl7.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(
+      vl1.value,
+      vl2.value,
+      vl3.value,
+      vl4.value,
+      vl5.value,
+      vl6.value,
+      vl7.value,
+    ),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -323,28 +268,21 @@ DisposableValueListenable<U> combineLatest8<T1, T2, T3, T4, T5, T6, T7, T8, U>(
   ValueListenable<T6> vl6,
   ValueListenable<T7> vl7,
   ValueListenable<T8> vl8,
-  U Function(
-    T1 v1,
-    T2 v2,
-    T3 v3,
-    T4 v4,
-    T5 v5,
-    T6 v6,
-    T7 v7,
-    T8 v8,
-  ) combine, {
+  U Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6, T7 v7, T8 v8) combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-    vl7.value,
-    vl8.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(
+      vl1.value,
+      vl2.value,
+      vl3.value,
+      vl4.value,
+      vl5.value,
+      vl6.value,
+      vl7.value,
+      vl8.value,
+    ),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -387,7 +325,7 @@ DisposableValueListenable<U> combineLatest8<T1, T2, T3, T4, T5, T6, T7, T8, U>(
 
 @useResult
 DisposableValueListenable<U>
-    combineLatest9<T1, T2, T3, T4, T5, T6, T7, T8, T9, U>(
+combineLatest9<T1, T2, T3, T4, T5, T6, T7, T8, T9, U>(
   ValueListenable<T1> vl1,
   ValueListenable<T2> vl2,
   ValueListenable<T3> vl3,
@@ -397,30 +335,23 @@ DisposableValueListenable<U>
   ValueListenable<T7> vl7,
   ValueListenable<T8> vl8,
   ValueListenable<T9> vl9,
-  U Function(
-    T1 v1,
-    T2 v2,
-    T3 v3,
-    T4 v4,
-    T5 v5,
-    T6 v6,
-    T7 v7,
-    T8 v8,
-    T9 v9,
-  ) combine, {
+  U Function(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6, T7 v7, T8 v8, T9 v9)
+  combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-    vl7.value,
-    vl8.value,
-    vl9.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(
+      vl1.value,
+      vl2.value,
+      vl3.value,
+      vl4.value,
+      vl5.value,
+      vl6.value,
+      vl7.value,
+      vl8.value,
+      vl9.value,
+    ),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -466,7 +397,7 @@ DisposableValueListenable<U>
 
 @useResult
 DisposableValueListenable<U>
-    combineLatest10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, U>(
+combineLatest10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, U>(
   ValueListenable<T1> vl1,
   ValueListenable<T2> vl2,
   ValueListenable<T3> vl3,
@@ -488,21 +419,24 @@ DisposableValueListenable<U>
     T8 v8,
     T9 v9,
     T10 v10,
-  ) combine, {
+  )
+  combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-    vl7.value,
-    vl8.value,
-    vl9.value,
-    vl10.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(
+      vl1.value,
+      vl2.value,
+      vl3.value,
+      vl4.value,
+      vl5.value,
+      vl6.value,
+      vl7.value,
+      vl8.value,
+      vl9.value,
+      vl10.value,
+    ),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -551,7 +485,7 @@ DisposableValueListenable<U>
 
 @useResult
 DisposableValueListenable<U>
-    combineLatest11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, U>(
+combineLatest11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, U>(
   ValueListenable<T1> vl1,
   ValueListenable<T2> vl2,
   ValueListenable<T3> vl3,
@@ -575,22 +509,25 @@ DisposableValueListenable<U>
     T9 v9,
     T10 v10,
     T11 v11,
-  ) combine, {
+  )
+  combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-    vl7.value,
-    vl8.value,
-    vl9.value,
-    vl10.value,
-    vl11.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(
+      vl1.value,
+      vl2.value,
+      vl3.value,
+      vl4.value,
+      vl5.value,
+      vl6.value,
+      vl7.value,
+      vl8.value,
+      vl9.value,
+      vl10.value,
+      vl11.value,
+    ),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -642,7 +579,7 @@ DisposableValueListenable<U>
 
 @useResult
 DisposableValueListenable<U>
-    combineLatest12<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, U>(
+combineLatest12<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, U>(
   ValueListenable<T1> vl1,
   ValueListenable<T2> vl2,
   ValueListenable<T3> vl3,
@@ -668,23 +605,26 @@ DisposableValueListenable<U>
     T10 v10,
     T11 v11,
     T12 v12,
-  ) combine, {
+  )
+  combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-    vl7.value,
-    vl8.value,
-    vl9.value,
-    vl10.value,
-    vl11.value,
-    vl12.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(
+      vl1.value,
+      vl2.value,
+      vl3.value,
+      vl4.value,
+      vl5.value,
+      vl6.value,
+      vl7.value,
+      vl8.value,
+      vl9.value,
+      vl10.value,
+      vl11.value,
+      vl12.value,
+    ),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -739,7 +679,7 @@ DisposableValueListenable<U>
 
 @useResult
 DisposableValueListenable<U>
-    combineLatest13<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, U>(
+combineLatest13<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, U>(
   ValueListenable<T1> vl1,
   ValueListenable<T2> vl2,
   ValueListenable<T3> vl3,
@@ -767,24 +707,27 @@ DisposableValueListenable<U>
     T11 v11,
     T12 v12,
     T13 v13,
-  ) combine, {
+  )
+  combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-    vl7.value,
-    vl8.value,
-    vl9.value,
-    vl10.value,
-    vl11.value,
-    vl12.value,
-    vl13.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(
+      vl1.value,
+      vl2.value,
+      vl3.value,
+      vl4.value,
+      vl5.value,
+      vl6.value,
+      vl7.value,
+      vl8.value,
+      vl9.value,
+      vl10.value,
+      vl11.value,
+      vl12.value,
+      vl13.value,
+    ),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -841,8 +784,8 @@ DisposableValueListenable<U>
 }
 
 @useResult
-DisposableValueListenable<U> combineLatest14<T1, T2, T3, T4, T5, T6, T7, T8, T9,
-    T10, T11, T12, T13, T14, U>(
+DisposableValueListenable<U>
+combineLatest14<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, U>(
   ValueListenable<T1> vl1,
   ValueListenable<T2> vl2,
   ValueListenable<T3> vl3,
@@ -872,25 +815,28 @@ DisposableValueListenable<U> combineLatest14<T1, T2, T3, T4, T5, T6, T7, T8, T9,
     T12 v12,
     T13 v13,
     T14 v14,
-  ) combine, {
+  )
+  combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-    vl7.value,
-    vl8.value,
-    vl9.value,
-    vl10.value,
-    vl11.value,
-    vl12.value,
-    vl13.value,
-    vl14.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(
+      vl1.value,
+      vl2.value,
+      vl3.value,
+      vl4.value,
+      vl5.value,
+      vl6.value,
+      vl7.value,
+      vl8.value,
+      vl9.value,
+      vl10.value,
+      vl11.value,
+      vl12.value,
+      vl13.value,
+      vl14.value,
+    ),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -950,8 +896,24 @@ DisposableValueListenable<U> combineLatest14<T1, T2, T3, T4, T5, T6, T7, T8, T9,
 }
 
 @useResult
-DisposableValueListenable<U> combineLatest15<T1, T2, T3, T4, T5, T6, T7, T8, T9,
-    T10, T11, T12, T13, T14, T15, U>(
+DisposableValueListenable<U> combineLatest15<
+  T1,
+  T2,
+  T3,
+  T4,
+  T5,
+  T6,
+  T7,
+  T8,
+  T9,
+  T10,
+  T11,
+  T12,
+  T13,
+  T14,
+  T15,
+  U
+>(
   ValueListenable<T1> vl1,
   ValueListenable<T2> vl2,
   ValueListenable<T3> vl3,
@@ -983,26 +945,29 @@ DisposableValueListenable<U> combineLatest15<T1, T2, T3, T4, T5, T6, T7, T8, T9,
     T13 v13,
     T14 v14,
     T15 v15,
-  ) combine, {
+  )
+  combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-    vl7.value,
-    vl8.value,
-    vl9.value,
-    vl10.value,
-    vl11.value,
-    vl12.value,
-    vl13.value,
-    vl14.value,
-    vl15.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(
+      vl1.value,
+      vl2.value,
+      vl3.value,
+      vl4.value,
+      vl5.value,
+      vl6.value,
+      vl7.value,
+      vl8.value,
+      vl9.value,
+      vl10.value,
+      vl11.value,
+      vl12.value,
+      vl13.value,
+      vl14.value,
+      vl15.value,
+    ),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -1065,8 +1030,25 @@ DisposableValueListenable<U> combineLatest15<T1, T2, T3, T4, T5, T6, T7, T8, T9,
 }
 
 @useResult
-DisposableValueListenable<U> combineLatest16<T1, T2, T3, T4, T5, T6, T7, T8, T9,
-    T10, T11, T12, T13, T14, T15, T16, U>(
+DisposableValueListenable<U> combineLatest16<
+  T1,
+  T2,
+  T3,
+  T4,
+  T5,
+  T6,
+  T7,
+  T8,
+  T9,
+  T10,
+  T11,
+  T12,
+  T13,
+  T14,
+  T15,
+  T16,
+  U
+>(
   ValueListenable<T1> vl1,
   ValueListenable<T2> vl2,
   ValueListenable<T3> vl3,
@@ -1100,27 +1082,30 @@ DisposableValueListenable<U> combineLatest16<T1, T2, T3, T4, T5, T6, T7, T8, T9,
     T14 v14,
     T15 v15,
     T16 v16,
-  ) combine, {
+  )
+  combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-    vl7.value,
-    vl8.value,
-    vl9.value,
-    vl10.value,
-    vl11.value,
-    vl12.value,
-    vl13.value,
-    vl14.value,
-    vl15.value,
-    vl16.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(
+      vl1.value,
+      vl2.value,
+      vl3.value,
+      vl4.value,
+      vl5.value,
+      vl6.value,
+      vl7.value,
+      vl8.value,
+      vl9.value,
+      vl10.value,
+      vl11.value,
+      vl12.value,
+      vl13.value,
+      vl14.value,
+      vl15.value,
+      vl16.value,
+    ),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -1186,8 +1171,26 @@ DisposableValueListenable<U> combineLatest16<T1, T2, T3, T4, T5, T6, T7, T8, T9,
 }
 
 @useResult
-DisposableValueListenable<U> combineLatest17<T1, T2, T3, T4, T5, T6, T7, T8, T9,
-    T10, T11, T12, T13, T14, T15, T16, T17, U>(
+DisposableValueListenable<U> combineLatest17<
+  T1,
+  T2,
+  T3,
+  T4,
+  T5,
+  T6,
+  T7,
+  T8,
+  T9,
+  T10,
+  T11,
+  T12,
+  T13,
+  T14,
+  T15,
+  T16,
+  T17,
+  U
+>(
   ValueListenable<T1> vl1,
   ValueListenable<T2> vl2,
   ValueListenable<T3> vl3,
@@ -1223,28 +1226,31 @@ DisposableValueListenable<U> combineLatest17<T1, T2, T3, T4, T5, T6, T7, T8, T9,
     T15 v15,
     T16 v16,
     T17 v17,
-  ) combine, {
+  )
+  combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-    vl7.value,
-    vl8.value,
-    vl9.value,
-    vl10.value,
-    vl11.value,
-    vl12.value,
-    vl13.value,
-    vl14.value,
-    vl15.value,
-    vl16.value,
-    vl17.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(
+      vl1.value,
+      vl2.value,
+      vl3.value,
+      vl4.value,
+      vl5.value,
+      vl6.value,
+      vl7.value,
+      vl8.value,
+      vl9.value,
+      vl10.value,
+      vl11.value,
+      vl12.value,
+      vl13.value,
+      vl14.value,
+      vl15.value,
+      vl16.value,
+      vl17.value,
+    ),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -1313,8 +1319,27 @@ DisposableValueListenable<U> combineLatest17<T1, T2, T3, T4, T5, T6, T7, T8, T9,
 }
 
 @useResult
-DisposableValueListenable<U> combineLatest18<T1, T2, T3, T4, T5, T6, T7, T8, T9,
-    T10, T11, T12, T13, T14, T15, T16, T17, T18, U>(
+DisposableValueListenable<U> combineLatest18<
+  T1,
+  T2,
+  T3,
+  T4,
+  T5,
+  T6,
+  T7,
+  T8,
+  T9,
+  T10,
+  T11,
+  T12,
+  T13,
+  T14,
+  T15,
+  T16,
+  T17,
+  T18,
+  U
+>(
   ValueListenable<T1> vl1,
   ValueListenable<T2> vl2,
   ValueListenable<T3> vl3,
@@ -1352,29 +1377,32 @@ DisposableValueListenable<U> combineLatest18<T1, T2, T3, T4, T5, T6, T7, T8, T9,
     T16 v16,
     T17 v17,
     T18 v18,
-  ) combine, {
+  )
+  combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-    vl7.value,
-    vl8.value,
-    vl9.value,
-    vl10.value,
-    vl11.value,
-    vl12.value,
-    vl13.value,
-    vl14.value,
-    vl15.value,
-    vl16.value,
-    vl17.value,
-    vl18.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(
+      vl1.value,
+      vl2.value,
+      vl3.value,
+      vl4.value,
+      vl5.value,
+      vl6.value,
+      vl7.value,
+      vl8.value,
+      vl9.value,
+      vl10.value,
+      vl11.value,
+      vl12.value,
+      vl13.value,
+      vl14.value,
+      vl15.value,
+      vl16.value,
+      vl17.value,
+      vl18.value,
+    ),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -1446,8 +1474,28 @@ DisposableValueListenable<U> combineLatest18<T1, T2, T3, T4, T5, T6, T7, T8, T9,
 }
 
 @useResult
-DisposableValueListenable<U> combineLatest19<T1, T2, T3, T4, T5, T6, T7, T8, T9,
-    T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, U>(
+DisposableValueListenable<U> combineLatest19<
+  T1,
+  T2,
+  T3,
+  T4,
+  T5,
+  T6,
+  T7,
+  T8,
+  T9,
+  T10,
+  T11,
+  T12,
+  T13,
+  T14,
+  T15,
+  T16,
+  T17,
+  T18,
+  T19,
+  U
+>(
   ValueListenable<T1> vl1,
   ValueListenable<T2> vl2,
   ValueListenable<T3> vl3,
@@ -1487,30 +1535,33 @@ DisposableValueListenable<U> combineLatest19<T1, T2, T3, T4, T5, T6, T7, T8, T9,
     T17 v17,
     T18 v18,
     T19 v19,
-  ) combine, {
+  )
+  combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-    vl7.value,
-    vl8.value,
-    vl9.value,
-    vl10.value,
-    vl11.value,
-    vl12.value,
-    vl13.value,
-    vl14.value,
-    vl15.value,
-    vl16.value,
-    vl17.value,
-    vl18.value,
-    vl19.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(
+      vl1.value,
+      vl2.value,
+      vl3.value,
+      vl4.value,
+      vl5.value,
+      vl6.value,
+      vl7.value,
+      vl8.value,
+      vl9.value,
+      vl10.value,
+      vl11.value,
+      vl12.value,
+      vl13.value,
+      vl14.value,
+      vl15.value,
+      vl16.value,
+      vl17.value,
+      vl18.value,
+      vl19.value,
+    ),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(
@@ -1585,8 +1636,29 @@ DisposableValueListenable<U> combineLatest19<T1, T2, T3, T4, T5, T6, T7, T8, T9,
 }
 
 @useResult
-DisposableValueListenable<U> combineLatest20<T1, T2, T3, T4, T5, T6, T7, T8, T9,
-    T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20, U>(
+DisposableValueListenable<U> combineLatest20<
+  T1,
+  T2,
+  T3,
+  T4,
+  T5,
+  T6,
+  T7,
+  T8,
+  T9,
+  T10,
+  T11,
+  T12,
+  T13,
+  T14,
+  T15,
+  T16,
+  T17,
+  T18,
+  T19,
+  T20,
+  U
+>(
   ValueListenable<T1> vl1,
   ValueListenable<T2> vl2,
   ValueListenable<T3> vl3,
@@ -1628,31 +1700,34 @@ DisposableValueListenable<U> combineLatest20<T1, T2, T3, T4, T5, T6, T7, T8, T9,
     T18 v18,
     T19 v19,
     T20 v20,
-  ) combine, {
+  )
+  combine, {
   VoidCallback? dispose,
 }) {
-  final combinedNotifier = ValueNotifier<U>(combine(
-    vl1.value,
-    vl2.value,
-    vl3.value,
-    vl4.value,
-    vl5.value,
-    vl6.value,
-    vl7.value,
-    vl8.value,
-    vl9.value,
-    vl10.value,
-    vl11.value,
-    vl12.value,
-    vl13.value,
-    vl14.value,
-    vl15.value,
-    vl16.value,
-    vl17.value,
-    vl18.value,
-    vl19.value,
-    vl20.value,
-  ));
+  final combinedNotifier = ValueNotifier<U>(
+    combine(
+      vl1.value,
+      vl2.value,
+      vl3.value,
+      vl4.value,
+      vl5.value,
+      vl6.value,
+      vl7.value,
+      vl8.value,
+      vl9.value,
+      vl10.value,
+      vl11.value,
+      vl12.value,
+      vl13.value,
+      vl14.value,
+      vl15.value,
+      vl16.value,
+      vl17.value,
+      vl18.value,
+      vl19.value,
+      vl20.value,
+    ),
+  );
 
   void onChange() {
     combinedNotifier.value = combine(

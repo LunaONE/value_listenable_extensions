@@ -4,23 +4,20 @@ version: 1.2.1
 homepage: https://github.com/LunaONE/value_listenable_extensions
 
 environment:
-  sdk: ">=3.2.3 <4.0.0"
-  flutter: ">=1.17.0"
+  sdk: ^3.10.0
 
 dependencies:
-  flutter:
-    sdk: flutter
+  listen: ^1.0.0
 
-  meta: ^1.4.0
+  meta: ^1.11.0
 
-  disposable_value_listenable: ^1.0.0
+  disposable_value_listenable: ^2.0.0
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  test: ^1.26.0
 
-  flutter_lints: ^3.0.1
+  lints: ^6.0.0
 
   code_builder: ^4.10.0
 
-  dart_style: ^2.3.4
+  dart_style: ^3.0.0

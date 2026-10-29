@@ -13,7 +13,7 @@ Future<void> main() async {
 
   final imports = [
     Directive.import('package:meta/meta.dart'),
-    Directive.import('package:flutter/foundation.dart'),
+    Directive.import('package:listen/listen.dart'),
     Directive.import(
         'package:value_listenable_extensions/value_listenable_extensions.dart'),
   ];
@@ -101,5 +101,8 @@ Future<void> main() async {
   ].map((e) => e.accept(emitter)).join('\n');
 
   await File('./lib/src/combine_latest.dart')
-      .writeAsString(DartFormatter(pageWidth: 80).format(code));
+      .writeAsString(DartFormatter(
+        languageVersion: DartFormatter.latestLanguageVersion,
+        pageWidth: 80,
+      ).format(code));
 }

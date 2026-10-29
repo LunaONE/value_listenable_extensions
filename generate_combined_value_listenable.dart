@@ -13,7 +13,8 @@ Future<void> main() async {
 
   final imports = [
     Directive.import('dart:async'),
-    Directive.import('package:flutter/foundation.dart'),
+    Directive.import('package:meta/meta.dart'),
+    Directive.import('package:listen/listen.dart'),
     Directive.import(
         'package:value_listenable_extensions/value_listenable_extensions.dart'),
   ];
@@ -94,7 +95,6 @@ Future<void> main() async {
     for (final method in ['addListener', 'removeListener']) {
       c.methods.add(Method((m) {
         m.annotations.add(const CodeExpression(Code('override')));
-        m.returns = refer('void');
         m.name = method;
         m.requiredParameters.add(Parameter((p) {
           p.name = 'listener';
@@ -115,7 +115,6 @@ Future<void> main() async {
 
     c.methods.add(Method((m) {
       m.annotations.add(const CodeExpression(Code('override')));
-      m.returns = refer('void');
       m.name = 'dispose';
       m.body = const Code('_source.dispose();');
     }));
@@ -131,5 +130,8 @@ Future<void> main() async {
       .join('\n');
 
   await File('./lib/src/combined_value_listenable.dart')
-      .writeAsString(DartFormatter(pageWidth: 80).format(code));
+      .writeAsString(DartFormatter(
+        languageVersion: DartFormatter.latestLanguageVersion,
+        pageWidth: 80,
+      ).format(code));
 }

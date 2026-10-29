@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:listen/listen.dart';
 import 'package:value_listenable_extensions/value_listenable_extensions.dart';
 
 /// A "read only" view into a value listenable, which allows specifying a `dispose` behavior, thus making it confirm to `DisposableValueListenable`
