@@ -16,10 +16,8 @@ extension DisposableValueListenableTransform<T>
 
 class _TransformedValueListenable<T, U> extends ValueNotifier<U>
     implements DisposableValueListenable<U> {
-  _TransformedValueListenable(
-    this._source,
-    this._map,
-  ) : super(_map(_source.value)) {
+  _TransformedValueListenable(this._source, this._map)
+    : super(_map(_source.value)) {
     _source.addListener(_onChange);
   }
 
@@ -32,9 +30,7 @@ class _TransformedValueListenable<T, U> extends ValueNotifier<U>
   }
 
   @override
-  set value(_) => throw Exception(
-        '`value` must not be set externally',
-      );
+  set value(_) => throw Exception('`value` must not be set externally');
 
   @override
   void dispose() {

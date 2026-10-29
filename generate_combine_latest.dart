@@ -15,7 +15,8 @@ Future<void> main() async {
     Directive.import('package:meta/meta.dart'),
     Directive.import('package:listen/listen.dart'),
     Directive.import(
-        'package:value_listenable_extensions/value_listenable_extensions.dart'),
+      'package:value_listenable_extensions/value_listenable_extensions.dart',
+    ),
   ];
 
   var funcs = <Spec>[];
@@ -44,12 +45,10 @@ Future<void> main() async {
         Parameter((p) {
           p.name = 'combine';
           p.type = FunctionType((f) {
-            f.requiredParameters.addAll(
-              [
-                for (final (i, type) in valueTypes.indexed)
-                  refer('$type ${valueNames[i]}'),
-              ],
-            );
+            f.requiredParameters.addAll([
+              for (final (i, type) in valueTypes.indexed)
+                refer('$type ${valueNames[i]}'),
+            ]);
 
             f.returnType = refer('U');
           });
@@ -72,15 +71,12 @@ Future<void> main() async {
           'void onChange() { combinedNotifier.value = combine(${valueListenableNames.map((e) => '$e.value').join(',')},); }\n\n',
           ...[
             for (final input in valueListenableNames)
-              '$input.addListener(onChange);'
+              '$input.addListener(onChange);',
           ],
           '\n\n',
           'return ValueListenableView(',
           '  combinedNotifier,',
-          '  dispose: () { combinedNotifier.dispose(); ${[
-            for (final input in valueListenableNames)
-              '$input.removeListener(onChange);'
-          ].join()} dispose?.call();},',
+          '  dispose: () { combinedNotifier.dispose(); ${[for (final input in valueListenableNames) '$input.removeListener(onChange);'].join()} dispose?.call();},',
           ');',
         ].join(''),
       );
@@ -89,10 +85,7 @@ Future<void> main() async {
     funcs.add(combineLatestFunc);
   }
 
-  final emitter = DartEmitter(
-    orderDirectives: true,
-    useNullSafetySyntax: true,
-  );
+  final emitter = DartEmitter(orderDirectives: true, useNullSafetySyntax: true);
 
   final code = <Spec>[
     comment,
@@ -100,9 +93,10 @@ Future<void> main() async {
     ...funcs,
   ].map((e) => e.accept(emitter)).join('\n');
 
-  await File('./lib/src/combine_latest.dart')
-      .writeAsString(DartFormatter(
-        languageVersion: DartFormatter.latestLanguageVersion,
-        pageWidth: 80,
-      ).format(code));
+  await File('./lib/src/combine_latest.dart').writeAsString(
+    DartFormatter(
+      languageVersion: DartFormatter.latestLanguageVersion,
+      pageWidth: 80,
+    ).format(code),
+  );
 }

@@ -24,8 +24,13 @@ void main() {
     // reading from disposed value listenable is forbidden
     expect(
       () => combined.value,
-      throwsA(isA<AssertionError>()
-          .having((e) => e.toString(), 'message', contains('Disposed'))),
+      throwsA(
+        isA<AssertionError>().having(
+          (e) => e.toString(),
+          'message',
+          contains('Disposed'),
+        ),
+      ),
     );
   });
 }
