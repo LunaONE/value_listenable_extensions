@@ -1,3 +1,7 @@
+## 2.0.1
+
+* Allow removing listeners after disposing a `ValueListenableView` (e.g. the result of `combineLatest*`), like on a `ChangeNotifier`
+
 ## 2.0.0
 
 * **Breaking:** Depend on [`listen`](https://pub.dev/packages/listen) instead of Flutter
