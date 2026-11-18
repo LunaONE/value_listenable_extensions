@@ -63,7 +63,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: ${{ matrix.flutter == 'stable' && '' || matrix.flutter }}
+          flutter-version: ${{ matrix.flutter != 'stable' && matrix.flutter || '' }}
 
       - name: Install dependencies
         run: flutter pub get
