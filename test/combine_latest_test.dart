@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart';
+import 'package:test/test.dart';
 import 'package:value_listenable_extensions/src/combine_latest.dart';
 
 void main() {
@@ -24,8 +24,13 @@ void main() {
     // reading from disposed value listenable is forbidden
     expect(
       () => combined.value,
-      throwsA(isA<AssertionError>()
-          .having((e) => e.toString(), 'message', contains('Disposed'))),
+      throwsA(
+        isA<AssertionError>().having(
+          (e) => e.toString(),
+          'message',
+          contains('Disposed'),
+        ),
+      ),
     );
   });
 }

@@ -1,3 +1,12 @@
+## 2.0.0
+
+* **Breaking:** Depend on [`listen`](https://pub.dev/packages/listen) instead of Flutter
+  * The package is now pure Dart and can be used outside of Flutter
+  * Flutter re-exports the `listen` types starting with Flutter 3.50, so Flutter apps need Flutter 3.50 or later (stay on 1.x for older versions)
+* **Breaking:** Require `disposable_value_listenable` 2.0, which is based on `listen` as well
+* **Breaking:** Declare the `CombinedValueListenable.connect*` methods as returning `void` (instead of an implicit `dynamic`)
+* Require Dart 3.10
+
 ## 1.2.1
 
 * Add `DisposableValueListenable.transform` to fully consume and map one value listenable into another
