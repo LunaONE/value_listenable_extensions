@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:listen/listen.dart';
 import 'package:meta/meta.dart';
 
 extension ValueListenableListen<T> on ValueListenable<T> {

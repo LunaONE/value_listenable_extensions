@@ -1,2 +1,2 @@
-fvm dart run generate_combine_latest.dart
-fvm dart run generate_combined_value_listenable.dart
+dart run generate_combine_latest.dart
+dart run generate_combined_value_listenable.dart

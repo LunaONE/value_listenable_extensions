@@ -11,7 +11,7 @@ Is similar to `addListener`, but handles inline functions by returning a callbac
 Semantically it differs from `addListener` (and `listen`) in that it invokes the callback right away with the `ValueListenable`'s current `value`.
 
 ```dart
-final source = ValueListenable(1);
+final source = ValueNotifier(1);
 
 final cancel = source.connect((v) => print(v));
 // prints 1
@@ -48,7 +48,7 @@ Like `addListener` it will be invoked for every subsequent change (but not the i
 
 
 ```dart
-final source = ValueListenable(1);
+final source = ValueNotifier(1);
 
 final cancel = source.listen((v) => print(v));
 // prints nothing
@@ -69,7 +69,7 @@ The returned output `ValueListenable` will update whenever any of the input chan
 final a = ValueNotifier(0);
 final b = ValueNotifier(0);
 
-final maxValue = combineLatest(a, b, (a, b) => max(a, b));
+final maxValue = combineLatest2(a, b, (a, b) => max(a, b));
 // maxValue.value == 0
 
 a.value = 5;

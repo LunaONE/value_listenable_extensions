@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart';
+import 'package:test/test.dart';
 import 'package:value_listenable_extensions/value_listenable_extensions.dart';
 
 void main() {

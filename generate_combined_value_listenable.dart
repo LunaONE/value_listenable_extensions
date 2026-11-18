@@ -13,9 +13,11 @@ Future<void> main() async {
 
   final imports = [
     Directive.import('dart:async'),
-    Directive.import('package:flutter/foundation.dart'),
+    Directive.import('package:meta/meta.dart'),
+    Directive.import('package:listen/listen.dart'),
     Directive.import(
-        'package:value_listenable_extensions/value_listenable_extensions.dart'),
+      'package:value_listenable_extensions/value_listenable_extensions.dart',
+    ),
   ];
 
   final combinedValueListenable = Class((c) {
@@ -23,8 +25,9 @@ Future<void> main() async {
     c.types.add(refer('T'));
     c.name = 'CombinedValueListenable';
     c.implements.add(refer('DisposableValueListenable<T>'));
-    c.constructors.add(Constructor((c) {
-      c.body = const Code('''
+    c.constructors.add(
+      Constructor((c) {
+        c.body = const Code('''
     scheduleMicrotask(() {
       assert(
         // ignore: unnecessary_type_check
@@ -32,106 +35,123 @@ Future<void> main() async {
         'connect*() has been invoked and a source has been set',);
     });
 ''');
-    }));
+      }),
+    );
 
-    c.fields.add(Field((f) {
-      f.late = true;
-      f.modifier = FieldModifier.final$;
-      f.type = refer('DisposableValueListenable<T>');
-      f.name = '_source';
-    }));
+    c.fields.add(
+      Field((f) {
+        f.late = true;
+        f.modifier = FieldModifier.final$;
+        f.type = refer('DisposableValueListenable<T>');
+        f.name = '_source';
+      }),
+    );
 
     /// Special case for 1
-    c.methods.add(Method((m) {
-      m.annotations.add(const CodeExpression(Code('protected')));
-      m.name = 'connect1';
-      m.types.addAll([
-        refer('T1'),
-      ]);
-      m.requiredParameters.addAll([
-        Parameter((p) {
-          p.name = 'vl1';
-          p.type = refer('ValueListenable<T1>');
-        }),
-      ]);
-      m.requiredParameters.add(Parameter((p) {
-        p.name = 'map';
-        p.type = refer('T Function(T1 v1,)');
-      }));
+    c.methods.add(
+      Method((m) {
+        m.annotations.add(const CodeExpression(Code('protected')));
+        m.returns = refer('void');
+        m.name = 'connect1';
+        m.types.addAll([refer('T1')]);
+        m.requiredParameters.addAll([
+          Parameter((p) {
+            p.name = 'vl1';
+            p.type = refer('ValueListenable<T1>');
+          }),
+        ]);
+        m.requiredParameters.add(
+          Parameter((p) {
+            p.name = 'map';
+            p.type = refer('T Function(T1 v1,)');
+          }),
+        );
 
-      m.body = const Code('_source = vl1.map(map);');
-    }));
+        m.body = const Code('_source = vl1.map(map);');
+      }),
+    );
 
     for (var i = 2; i <= 20; i++) {
-      c.methods.add(Method((m) {
-        m.annotations.add(const CodeExpression(Code('protected')));
-        m.name = 'connect$i';
-        m.types.addAll([
-          for (var x = 1; x <= i; x++) refer('T$x'),
-        ]);
-        m.requiredParameters.addAll([
-          for (var x = 1; x <= i; x++)
+      c.methods.add(
+        Method((m) {
+          m.annotations.add(const CodeExpression(Code('protected')));
+          m.returns = refer('void');
+          m.name = 'connect$i';
+          m.types.addAll([for (var x = 1; x <= i; x++) refer('T$x')]);
+          m.requiredParameters.addAll([
+            for (var x = 1; x <= i; x++)
+              Parameter((p) {
+                p.name = 'vl$x';
+                p.type = refer('ValueListenable<T$x>');
+              }),
+          ]);
+          m.requiredParameters.add(
             Parameter((p) {
-              p.name = 'vl$x';
-              p.type = refer('ValueListenable<T$x>');
+              p.name = 'map';
+              p.type = refer(
+                'T Function(${[for (var x = 1; x <= i; x++) 'T$x v$x'].join(',')},)',
+              );
             }),
-        ]);
-        m.requiredParameters.add(Parameter((p) {
-          p.name = 'map';
-          p.type = refer('T Function(${[
-            for (var x = 1; x <= i; x++) 'T$x v$x'
-          ].join(',')},)');
-        }));
+          );
 
-        m.body = Code('_source = combineLatest$i(${[
-          for (var x = 1; x <= i; x++) 'vl$x',
-          'map',
-        ].join(',')},);');
-      }));
+          m.body = Code(
+            '_source = combineLatest$i(${[for (var x = 1; x <= i; x++) 'vl$x', 'map'].join(',')},);',
+          );
+        }),
+      );
     }
 
     // base value listenable implementation
     for (final method in ['addListener', 'removeListener']) {
-      c.methods.add(Method((m) {
-        m.annotations.add(const CodeExpression(Code('override')));
-        m.returns = refer('void');
-        m.name = method;
-        m.requiredParameters.add(Parameter((p) {
-          p.name = 'listener';
-          p.type = refer('VoidCallback');
-        }));
-        m.body = Code('_source.$method(listener);');
-      }));
+      c.methods.add(
+        Method((m) {
+          m.annotations.add(const CodeExpression(Code('override')));
+          m.returns = refer('void');
+          m.name = method;
+          m.requiredParameters.add(
+            Parameter((p) {
+              p.name = 'listener';
+              p.type = refer('VoidCallback');
+            }),
+          );
+          m.body = Code('_source.$method(listener);');
+        }),
+      );
     }
 
-    c.methods.add(Method((m) {
-      m.annotations.add(const CodeExpression(Code('override')));
-      m.returns = refer('T');
-      m.type = MethodType.getter;
-      m.name = 'value';
-      m.lambda = true;
-      m.body = const Code('_source.value');
-    }));
+    c.methods.add(
+      Method((m) {
+        m.annotations.add(const CodeExpression(Code('override')));
+        m.returns = refer('T');
+        m.type = MethodType.getter;
+        m.name = 'value';
+        m.lambda = true;
+        m.body = const Code('_source.value');
+      }),
+    );
 
-    c.methods.add(Method((m) {
-      m.annotations.add(const CodeExpression(Code('override')));
-      m.returns = refer('void');
-      m.name = 'dispose';
-      m.body = const Code('_source.dispose();');
-    }));
+    c.methods.add(
+      Method((m) {
+        m.annotations.add(const CodeExpression(Code('override')));
+        m.returns = refer('void');
+        m.name = 'dispose';
+        m.body = const Code('_source.dispose();');
+      }),
+    );
   });
 
-  final emitter = DartEmitter(
-    orderDirectives: true,
-    useNullSafetySyntax: true,
+  final emitter = DartEmitter(orderDirectives: true, useNullSafetySyntax: true);
+
+  final code = <Spec>[
+    comment,
+    ...imports,
+    combinedValueListenable,
+  ].map((e) => e.accept(emitter)).join('\n');
+
+  await File('./lib/src/combined_value_listenable.dart').writeAsString(
+    DartFormatter(
+      languageVersion: DartFormatter.latestLanguageVersion,
+      pageWidth: 80,
+    ).format(code),
   );
-
-  final code = <Spec>[comment, ...imports, combinedValueListenable]
-      .map((e) => e.accept(emitter))
-      .join('\n');
-
-  final file = await File('./lib/src/combined_value_listenable.dart')
-      .open(mode: FileMode.writeOnly);
-
-  await file.writeString(DartFormatter(pageWidth: 80).format(code));
 }
