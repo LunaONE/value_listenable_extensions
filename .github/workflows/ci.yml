@@ -41,8 +41,15 @@ jobs:
         run: dart test
 
   flutter:
-    name: Flutter beta
+    name: Flutter ${{ matrix.flutter }}
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        flutter:
+          - "3.50.0" # first version re-exporting the `listen` types
+          - stable
 
     defaults:
       run:
@@ -52,11 +59,11 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v7
 
-      # Flutter re-exports the `listen` types starting with 3.50, which is on beta for now
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: beta
+          channel: stable
+          flutter-version: ${{ matrix.flutter == 'stable' && '' || matrix.flutter }}
 
       - name: Install dependencies
         run: flutter pub get
