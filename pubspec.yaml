@@ -1,5 +1,5 @@
 name: value_listenable_extensions
-description: "Useful tools for working with `ValueListenable`s."
+description: "Extensions for `ValueListenable`: `map`, `listen`, `connect` and `combineLatest*`, plus `CombinedValueListenable` to build state classes from multiple value listenables."
 version: 2.0.1
 homepage: https://github.com/LunaONE/value_listenable_extensions
 
