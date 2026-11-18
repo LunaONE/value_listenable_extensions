@@ -3,7 +3,7 @@ description: "Checks that the extensions work with Flutter's own `ValueListenabl
 publish_to: none
 
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.14.0
   flutter: ">=3.50.0"
 
 dependencies:

@@ -5,7 +5,7 @@
   * Flutter re-exports the `listen` types starting with Flutter 3.50, so Flutter apps need Flutter 3.50 or later (stay on 1.x for older versions)
 * **Breaking:** Require `disposable_value_listenable` 2.0, which is based on `listen` as well
 * **Breaking:** Declare the `CombinedValueListenable.connect*` methods as returning `void` (instead of an implicit `dynamic`)
-* Require Dart 3.10
+* Require Dart 3.14 (shipped with Flutter 3.50), so that Flutter apps on older versions keep resolving to 1.x
 
 ## 1.2.1
 

@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         sdk:
-          - "3.10.0" # lowest supported version, see `pubspec.yaml`
+          - "3.14.0" # lowest supported version, see `pubspec.yaml`
           - stable
 
     steps:
