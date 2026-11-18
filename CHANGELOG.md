@@ -5,6 +5,10 @@
   * Flutter re-exports the `listen` types starting with Flutter 3.50, so Flutter apps need Flutter 3.50 or later (stay on 1.x for older versions)
 * **Breaking:** Require `disposable_value_listenable` 2.0, which is based on `listen` as well
 * **Breaking:** Declare the `CombinedValueListenable.connect*` methods as returning `void` (instead of an implicit `dynamic`)
+* Add `mapAsync` and `DisposableValueListenable.transformAsync` to map into a value listenable with an asynchronous computation
+  * The value is an `AsyncState` (`AsyncLoading`, `AsyncData`, or `AsyncError` with the `previous` data), the running computation is exposed via `isUpdating`
+  * Only the result for the latest source value is exposed
+* Add `combineLatestAsync*` to combine multiple value listenables with an asynchronous computation, like `mapAsync`
 * Require Dart 3.10
 
 ## 1.2.1

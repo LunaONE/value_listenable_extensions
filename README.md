@@ -59,6 +59,35 @@ source.value = 2;
 cancel();
 ```
 
+### `mapAsync`
+
+Creates a new `ValueListenable` that derives its value from a source `ValueListenable` mapped by the given asynchronous function.
+
+Its value is an `AsyncState`: `AsyncLoading` until the first computation completes, then `AsyncData` or `AsyncError`. When the source changes, the last result is kept while the new one is computed (signaled by `isUpdating`), and only the result for the latest source value is exposed. An `AsyncError` holds the `previous` data, if there was any, so the error can be shown on top of it.
+
+The caller of `mapAsync` receives ownership of the newly created `ValueListenable` and should later `dispose` it. `transformAsync` does the same, but consumes (and later disposes) its source.
+
+`combineLatestAsync*` is the asynchronous relative of `combineLatest*`, which loads from multiple sources (2 to 20) with the same semantics.
+
+```dart
+final userId = ValueNotifier('1');
+
+final profile = userId.mapAsync(loadProfile);
+
+ValueListenableBuilder(
+  valueListenable: profile,
+  builder: (context, state, _) => switch (state) {
+    AsyncLoading() => const Spinner(),
+    AsyncData(:final value) => ProfileView(value),
+    AsyncError(:final error, previous: AsyncData(:final value)) =>
+      Column(children: [ErrorBanner(error), ProfileView(value)]),
+    AsyncError(:final error) => ErrorView(error),
+  },
+);
+
+profile.dispose();
+```
+
 ## `combineLatest*`
 
 The `combineLatest*` functions provide a `map`-like feature to be used with a number of `ValueListenable` inputs (2 to 20).
