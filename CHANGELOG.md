@@ -1,6 +1,7 @@
 ## 2.0.1
 
 * Allow removing listeners after disposing a `ValueListenableView` (e.g. the result of `combineLatest*`), like on a `ChangeNotifier`
+* Fix the assertion for a missing `connect*` call in a `CombinedValueListenable`, which failed with a `LateInitializationError` instead of its message
 
 ## 2.0.0
 
