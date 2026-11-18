@@ -8,9 +8,8 @@ class ValueListenableView<T> implements DisposableValueListenable<T> {
 
     /// If this object should represent the sole access to the underlying [notifier],
     /// then [dipose] should contain a call to the notifier's disposal
-    VoidCallback? dispose,
-  }) : _notifier = notifier,
-       _dispose = dispose;
+    this._dispose,
+  }) : _notifier = notifier;
 
   final ValueListenable<T> _notifier;
 
